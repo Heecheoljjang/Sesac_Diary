@@ -21,10 +21,8 @@
 		97D3D58E28B0E43C00BECC8B /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D58D28B0E43C00BECC8B /* WriteView.swift */; };
 		97D3D59028B0E44900BECC8B /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D58F28B0E44900BECC8B /* ImageSelectViewController.swift */; };
 		97D3D59228B0E45000BECC8B /* ImageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D59128B0E45000BECC8B /* ImageSelectView.swift */; };
-		97D3D59428B0EB4C00BECC8B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D59328B0EB4C00BECC8B /* CustomTextField.swift */; };
+		97D3D59428B0EB4C00BECC8B /* CustomTitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D59328B0EB4C00BECC8B /* CustomTitleTextField.swift */; };
 		97D3D59728B0F99100BECC8B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 97D3D59628B0F99100BECC8B /* SnapKit */; };
-		97D3D59928B1145D00BECC8B /* WritingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D59828B1145D00BECC8B /* WritingTextViewController.swift */; };
-		97D3D59D28B1159600BECC8B /* WritingTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D59C28B1159600BECC8B /* WritingTextFieldView.swift */; };
 		97D3D59F28B117CA00BECC8B /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D59E28B117CA00BECC8B /* CustomTextView.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,9 +43,7 @@
 		97D3D58D28B0E43C00BECC8B /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		97D3D58F28B0E44900BECC8B /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
 		97D3D59128B0E45000BECC8B /* ImageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectView.swift; sourceTree = "<group>"; };
-		97D3D59328B0EB4C00BECC8B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		97D3D59828B1145D00BECC8B /* WritingTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTextViewController.swift; sourceTree = "<group>"; };
-		97D3D59C28B1159600BECC8B /* WritingTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTextFieldView.swift; sourceTree = "<group>"; };
+		97D3D59328B0EB4C00BECC8B /* CustomTitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleTextField.swift; sourceTree = "<group>"; };
 		97D3D59E28B117CA00BECC8B /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +81,7 @@
 				97D3D58628B0E00800BECC8B /* Model */,
 				97D3D58228B0DF7200BECC8B /* Scene */,
 				97D3D57D28B0C9B000BECC8B /* Utility */,
+				97D3D5A028B13D3C00BECC8B /* Extension */,
 				97D3D56928B0C94700BECC8B /* AppDelegate.swift */,
 				97D3D56B28B0C94700BECC8B /* SceneDelegate.swift */,
 				97D3D56F28B0C94700BECC8B /* Main.storyboard */,
@@ -100,7 +97,7 @@
 			children = (
 				97D3D57E28B0C9FC00BECC8B /* BaseViewController.swift */,
 				97D3D58028B0CA0500BECC8B /* BaseView.swift */,
-				97D3D59328B0EB4C00BECC8B /* CustomTextField.swift */,
+				97D3D59328B0EB4C00BECC8B /* CustomTitleTextField.swift */,
 				97D3D59E28B117CA00BECC8B /* CustomTextView.swift */,
 			);
 			path = Utility;
@@ -138,7 +135,6 @@
 			children = (
 				97D3D58B28B0E43500BECC8B /* WriteViewController.swift */,
 				97D3D58D28B0E43C00BECC8B /* WriteView.swift */,
-				97D3D59B28B114EA00BECC8B /* WritingTextField */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -152,13 +148,11 @@
 			path = ImageSelect;
 			sourceTree = "<group>";
 		};
-		97D3D59B28B114EA00BECC8B /* WritingTextField */ = {
+		97D3D5A028B13D3C00BECC8B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				97D3D59828B1145D00BECC8B /* WritingTextViewController.swift */,
-				97D3D59C28B1159600BECC8B /* WritingTextFieldView.swift */,
 			);
-			path = WritingTextField;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,13 +236,11 @@
 				97D3D57F28B0C9FC00BECC8B /* BaseViewController.swift in Sources */,
 				97D3D58E28B0E43C00BECC8B /* WriteView.swift in Sources */,
 				97D3D58128B0CA0500BECC8B /* BaseView.swift in Sources */,
-				97D3D59928B1145D00BECC8B /* WritingTextViewController.swift in Sources */,
 				97D3D58528B0DF8B00BECC8B /* StartView.swift in Sources */,
 				97D3D56A28B0C94700BECC8B /* AppDelegate.swift in Sources */,
-				97D3D59D28B1159600BECC8B /* WritingTextFieldView.swift in Sources */,
 				97D3D56C28B0C94700BECC8B /* SceneDelegate.swift in Sources */,
 				97D3D58C28B0E43500BECC8B /* WriteViewController.swift in Sources */,
-				97D3D59428B0EB4C00BECC8B /* CustomTextField.swift in Sources */,
+				97D3D59428B0EB4C00BECC8B /* CustomTitleTextField.swift in Sources */,
 				97D3D59F28B117CA00BECC8B /* CustomTextView.swift in Sources */,
 				97D3D59228B0E45000BECC8B /* ImageSelectView.swift in Sources */,
 				97D3D59028B0E44900BECC8B /* ImageSelectViewController.swift in Sources */,

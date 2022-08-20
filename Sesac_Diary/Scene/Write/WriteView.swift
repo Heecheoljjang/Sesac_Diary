@@ -14,21 +14,21 @@ class WriteView: BaseView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         view.layer.cornerRadius = 10
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .systemMint
 
         return view
     }()
     
-    let titleTextField: CustomTextField = {
-        let textField = CustomTextField()
+    let titleTextField: CustomTitleTextField = {
+        let textField = CustomTitleTextField()
         textField.attributedPlaceholder = NSAttributedString(string: "제목을 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.6)])
         
         return textField
     }()
     
-    let dateTextField: CustomTextField = {
-        let textField = CustomTextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "제목을 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.6)])
+    let dateTextField: CustomDateTextField = {
+        let textField = CustomDateTextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "날짜를 선택해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.6)])
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 36))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -88,7 +88,7 @@ class WriteView: BaseView {
             make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
             make.leading.equalTo(self).offset(24)
             make.trailing.equalTo(self).offset(-24)
-            make.height.equalTo(self).multipliedBy(0.35)
+            make.height.equalTo(self).multipliedBy(0.3)
         }
         
         titleTextField.snp.makeConstraints { make in

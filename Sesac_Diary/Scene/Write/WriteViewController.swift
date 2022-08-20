@@ -18,25 +18,5 @@ class WriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView.bodyTextView.delegate = self
-        
     }
-}
-
-extension WriteViewController: UITextViewDelegate {
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        let vc = WritingTextViewController()
-        
-        vc.modalPresentationStyle = .fullScreen
-        vc.bodyText = mainView.bodyTextView.text
-        
-        vc.sendTextHandler = { text in
-            self.mainView.bodyTextView.text = text
-        }
-        
-        present(vc, animated: true)
-        return true
-    }
-    
 }
