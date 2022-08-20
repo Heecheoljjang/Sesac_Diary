@@ -22,6 +22,7 @@ class WriteView: BaseView {
     let titleTextField: CustomTitleTextField = {
         let textField = CustomTitleTextField()
         textField.attributedPlaceholder = NSAttributedString(string: "제목을 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.6)])
+        textField.tintColor = .white
         
         return textField
     }()
@@ -29,6 +30,7 @@ class WriteView: BaseView {
     let dateTextField: CustomDateTextField = {
         let textField = CustomDateTextField()
         textField.attributedPlaceholder = NSAttributedString(string: "날짜를 선택해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.6)])
+        textField.tintColor = .clear
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 36))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -47,6 +49,8 @@ class WriteView: BaseView {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.locale = Locale(identifier: "ko-KR")
         
+        datePicker.maximumDate = Date()
+        
         return datePicker
     }()
     
@@ -55,7 +59,7 @@ class WriteView: BaseView {
         
         return view
     }()
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -75,9 +79,7 @@ class WriteView: BaseView {
         }
         
         dateTextField.inputView = datePicker
-        
-        
-        
+                
         backgroundColor = .lightGray
     }
     
@@ -125,4 +127,5 @@ class WriteView: BaseView {
         self.endEditing(true)
         
     }
+
 }
