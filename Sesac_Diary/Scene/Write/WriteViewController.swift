@@ -31,6 +31,10 @@ extension WriteViewController: UITextViewDelegate {
         vc.modalPresentationStyle = .fullScreen
         vc.bodyText = mainView.bodyTextView.text
         
+        vc.sendTextHandler = { text in
+            self.mainView.bodyTextView.text = text
+        }
+        
         present(vc, animated: true)
         return true
     }

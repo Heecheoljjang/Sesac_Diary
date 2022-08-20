@@ -13,19 +13,27 @@ class WritingTextViewController: BaseViewController {
     
     var bodyText = ""
     
+    var sendTextHandler: ((String) -> ())?
+    
     override func loadView() {
         self.view = mainView
-    
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.mainTextView.text = bodyText
         mainView.dismissButton.addTarget(self, action: #selector(dismissAction), for: .touchUpInside)
-        
+        mainView.doneButton.addTarget(self, action: #selector(sendText), for: .touchUpInside)
     }
     
     @objc func dismissAction() {
+        dismiss(animated: true)
+    }
+    
+    @objc func sendText() {
+        sendTextHandler?(mainView.mainTextView.text)
         dismiss(animated: true)
     }
 }
