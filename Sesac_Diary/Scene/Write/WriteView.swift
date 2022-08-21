@@ -61,6 +61,25 @@ class WriteView: BaseView {
         
         return view
     }()
+    
+    let imageSelectButton: UIButton = {
+        let button = UIButton()
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(systemName: "photo")
+        configuration.baseBackgroundColor = .white
+        configuration.baseForegroundColor = .systemGray
+        configuration.cornerStyle = .capsule
+        
+        button.configuration = configuration
+        return button
+    }()
+    
+    let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        
+        return view
+    }()
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,7 +95,7 @@ class WriteView: BaseView {
     override func configure() {
         super.configure()
         
-        [mainImageView, titleTextField, dateTextField, bodyTextView].forEach {
+        [mainImageView, titleTextField, dateTextField, bodyTextView, imageSelectButton, lineView].forEach {
             self.addSubview($0)
         }
         
@@ -111,6 +130,18 @@ class WriteView: BaseView {
             make.top.equalTo(dateTextField.snp.bottom).offset(20)
             make.leading.trailing.equalTo(mainImageView)
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+        }
+        
+        imageSelectButton.snp.makeConstraints { make in
+            make.width.height.equalTo(44)
+            make.trailing.equalTo(mainImageView.snp.trailing).offset(-20)
+            make.bottom.equalTo(mainImageView.snp.bottom).offset(-20)
+        }
+        
+        lineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.top.equalTo(self.safeAreaLayoutGuide)
+            make.trailing.leading.equalTo(self)
         }
     }
 

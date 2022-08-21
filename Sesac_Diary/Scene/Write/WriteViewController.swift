@@ -28,8 +28,23 @@ class WriteViewController: BaseViewController {
         mainView.addGestureRecognizer(mainViewTapGesture)
         mainView.mainImageView.addGestureRecognizer(imageViewTapGesture)
         
+        mainView.imageSelectButton.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
+                
     }
 
+    override func setUpNavigationController() {
+        super.setUpNavigationController()
+        
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white ]
+
+        title = "글 쓰기"
+    }
+  
+    @objc func selectImage() {
+        let vc = ImageSelectViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         mainView.bodyTextView.endEditing(true)
         mainView.titleTextField.endEditing(true)

@@ -17,14 +17,19 @@ class StartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let addButton = UIBarButtonItem(title: "글 쓰기", style: .plain, target: self, action: #selector(startWriting))
-        
-        self.navigationItem.rightBarButtonItem = addButton
-        navigationController?.navigationBar.tintColor = .white
-        
+            
     }
     
+    override func setUpNavigationController() {
+        super.setUpNavigationController()
+        
+        let addButton = UIBarButtonItem(title: "글 쓰기", style: .plain, target: self, action: #selector(startWriting))
+        self.navigationItem.rightBarButtonItem = addButton
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white ]
+        title = "내 다이어리"
+    }
+
     @objc func startWriting() {
         let vc = WriteViewController()
         self.navigationController?.pushViewController(vc, animated: true)
