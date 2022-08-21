@@ -20,11 +20,11 @@ class CustomTextView: UITextView {
     }
     
     func setUpView() {
-        textColor = .white
+        textColor = .white.withAlphaComponent(0.6)
         layer.cornerRadius = 10
-        textColor = .black
-        font = .systemFont(ofSize: 18, weight: .regular)
+        //font = .systemFont(ofSize: 18, weight: .regular)
         textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        backgroundColor = .systemGray
     }
 }
 

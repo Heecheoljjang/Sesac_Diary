@@ -5,4 +5,21 @@
 //  Created by HeecheolYoon on 2022/08/20.
 //
 
-import Foundation
+import UIKit
+
+class ImageSelectView: BaseView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func configure() {
+        backgroundColor = .lightGray
+    }
+}
