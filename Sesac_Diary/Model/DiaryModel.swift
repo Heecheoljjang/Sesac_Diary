@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct Diary {
-    let imageURL: String
+    let image: UIImage?
     let title: String
     let date: String
     let body: String

@@ -4,8 +4,6 @@
 //
 //  Created by HeecheolYoon on 2022/08/21.
 //
-
-import Foundation
 import UIKit
 
 protocol ReuseIdentifier {

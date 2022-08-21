@@ -12,6 +12,10 @@
 		9731733F28B22B430068561D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731733E28B22B430068561D /* BaseCollectionViewCell.swift */; };
 		9731734328B239100068561D /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734228B239100068561D /* UICollectionViewCell+Extension.swift */; };
 		9731734628B24A240068561D /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 9731734528B24A240068561D /* JGProgressHUD */; };
+		9731734928B299000068561D /* StartViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734828B299000068561D /* StartViewController+Extension.swift */; };
+		9731734C28B299470068561D /* StartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734B28B299470068561D /* StartTableViewCell.swift */; };
+		9731734E28B299600068561D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734D28B299600068561D /* UITableViewCell+Extension.swift */; };
+		9731735028B29A1E0068561D /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734F28B29A1E0068561D /* BaseTableViewCell.swift */; };
 		97D3D56A28B0C94700BECC8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56928B0C94700BECC8B /* AppDelegate.swift */; };
 		97D3D56C28B0C94700BECC8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56B28B0C94700BECC8B /* SceneDelegate.swift */; };
 		97D3D56E28B0C94700BECC8B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56D28B0C94700BECC8B /* StartViewController.swift */; };
@@ -44,6 +48,10 @@
 		9731733C28B2281F0068561D /* ImageSelectViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageSelectViewController+Extension.swift"; sourceTree = "<group>"; };
 		9731733E28B22B430068561D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		9731734228B239100068561D /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		9731734828B299000068561D /* StartViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartViewController+Extension.swift"; sourceTree = "<group>"; };
+		9731734B28B299470068561D /* StartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTableViewCell.swift; sourceTree = "<group>"; };
+		9731734D28B299600068561D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		9731734F28B29A1E0068561D /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		97D3D56628B0C94700BECC8B /* Sesac_Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sesac_Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D3D56928B0C94700BECC8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D3D56B28B0C94700BECC8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +101,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		9731734A28B299330068561D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9731734B28B299470068561D /* StartTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		97D3D55D28B0C94700BECC8B = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +152,7 @@
 				97D3D57E28B0C9FC00BECC8B /* BaseViewController.swift */,
 				97D3D58028B0CA0500BECC8B /* BaseView.swift */,
 				9731733E28B22B430068561D /* BaseCollectionViewCell.swift */,
+				9731734F28B29A1E0068561D /* BaseTableViewCell.swift */,
 				97D3D59328B0EB4C00BECC8B /* CustomTitleTextField.swift */,
 				97D3D59E28B117CA00BECC8B /* CustomTextView.swift */,
 			);
@@ -157,6 +174,7 @@
 			children = (
 				97D3D56D28B0C94700BECC8B /* StartViewController.swift */,
 				97D3D58428B0DF8B00BECC8B /* StartView.swift */,
+				9731734A28B299330068561D /* Cell */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -194,6 +212,8 @@
 			children = (
 				9731733C28B2281F0068561D /* ImageSelectViewController+Extension.swift */,
 				9731734228B239100068561D /* UICollectionViewCell+Extension.swift */,
+				9731734828B299000068561D /* StartViewController+Extension.swift */,
+				9731734D28B299600068561D /* UITableViewCell+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -311,8 +331,10 @@
 				97D3D56E28B0C94700BECC8B /* StartViewController.swift in Sources */,
 				97D3D57F28B0C9FC00BECC8B /* BaseViewController.swift in Sources */,
 				9731734328B239100068561D /* UICollectionViewCell+Extension.swift in Sources */,
+				9731735028B29A1E0068561D /* BaseTableViewCell.swift in Sources */,
 				97D3D58E28B0E43C00BECC8B /* WriteView.swift in Sources */,
 				97D3D58128B0CA0500BECC8B /* BaseView.swift in Sources */,
+				9731734C28B299470068561D /* StartTableViewCell.swift in Sources */,
 				97D3D58528B0DF8B00BECC8B /* StartView.swift in Sources */,
 				97E9BCD428B1F33900DEC5C0 /* EndPoint.swift in Sources */,
 				9731733B28B227E20068561D /* ImageCollectionViewCell.swift in Sources */,
@@ -325,6 +347,8 @@
 				97D3D59F28B117CA00BECC8B /* CustomTextView.swift in Sources */,
 				97D3D59228B0E45000BECC8B /* ImageSelectView.swift in Sources */,
 				97E9BCC228B1EF1900DEC5C0 /* ImageAPIManager.swift in Sources */,
+				9731734928B299000068561D /* StartViewController+Extension.swift in Sources */,
+				9731734E28B299600068561D /* UITableViewCell+Extension.swift in Sources */,
 				97E9BCBF28B1E8DE00DEC5C0 /* ImageSearchModel.swift in Sources */,
 				97E9BCD128B1F02F00DEC5C0 /* Key.swift in Sources */,
 				97D3D59028B0E44900BECC8B /* ImageSelectViewController.swift in Sources */,

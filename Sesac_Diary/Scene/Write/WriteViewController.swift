@@ -10,6 +10,8 @@ import UIKit
 class WriteViewController: BaseViewController {
     
     var mainView = WriteView()
+    
+    var diaryDataHandler: ((Diary) -> ())?
         
     override func loadView() {
         self.view = mainView
@@ -43,9 +45,22 @@ class WriteViewController: BaseViewController {
     
     @objc func doneWriting() {
         //데이터 전달
-        
-        //pop
-        navigationController?.popViewController(animated: true)
+        //데이터 다 있는지
+        if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
+            if mainView.bodyTextView.text != "내용을 입력해주세요" {
+                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: mainView.bodyTextView.text)
+                diaryDataHandler?(diary)
+                //pop
+                navigationController?.popViewController(animated: true)
+            } else {
+                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: "")
+                diaryDataHandler?(diary)
+                //pop
+                navigationController?.popViewController(animated: true)
+            }
+        } else {
+            showAlert()
+        }
     }
   
     @objc func selectImage() {

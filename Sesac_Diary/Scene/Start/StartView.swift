@@ -18,6 +18,13 @@ class StartView: BaseView {
         return view
     }()
     
+    let tableView: UITableView = {
+        let view = UITableView()
+        view.backgroundColor = .lightGray
+        
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -31,7 +38,7 @@ class StartView: BaseView {
     
     override func configure() {
         
-        [lineView].forEach {
+        [lineView, tableView].forEach {
             self.addSubview($0)
         }
         backgroundColor = .lightGray
@@ -42,6 +49,12 @@ class StartView: BaseView {
             make.height.equalTo(1)
             make.top.equalTo(self.safeAreaLayoutGuide)
             make.trailing.leading.equalTo(self)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(lineView.snp.bottom)
+            make.leading.trailing.equalTo(self)
+            make.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
 
