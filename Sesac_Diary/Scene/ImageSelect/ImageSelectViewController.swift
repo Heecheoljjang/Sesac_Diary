@@ -7,6 +7,8 @@
 
 import UIKit
 
+import JGProgressHUD
+
 class ImageSelectViewController: BaseViewController {
     
     var mainView = ImageSelectView()
@@ -36,6 +38,25 @@ class ImageSelectViewController: BaseViewController {
         mainView.collectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
+        mainView.collectionView.prefetchDataSource = self
+
+    }
+    
+    func fetchImage(page: Int, query: String) {
+        let hud = JGProgressHUD()
+        hud.textLabel.text = "Loading"
+        hud.backgroundColor = .lightGray
+        hud.show(in: self.mainView.collectionView)
+        
+        if let text = mainView.searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            ImageAPIManager.shared.getImageUrl(page: page, query: text) { data in
+                self.imageList.append(contentsOf: data)
+                
+                self.mainView.collectionView.reloadData()
+                
+                hud.dismiss(animated: true)
+            }
+        }
     }
     
     override func setUpNavigationController() {

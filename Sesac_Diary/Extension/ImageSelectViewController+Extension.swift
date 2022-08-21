@@ -20,9 +20,7 @@ extension ImageSelectViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
         let url = URL(string: imageList[indexPath.item].regular)
-//        let data = try! Data(contentsOf: url!)
-//        let image = UIImage(data: data)
-//        cell.imageView.image = image
+
         cell.imageView.kf.setImage(with: url)
 
         return cell
@@ -35,18 +33,33 @@ extension ImageSelectViewController: UICollectionViewDelegate, UICollectionViewD
     
 }
 
+extension ImageSelectViewController: UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if imageList.count - 3 == indexPath.item {
+                page += 1
+                if let text = mainView.searchBar.text {
+                    fetchImage(page: page, query: text)
+                }
+            }
+        }
+    }
+}
+
 extension ImageSelectViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.endEditing(true)
-        
-        let hud = JGProgressHUD()
-        hud.textLabel.text = "Loading"
-        hud.backgroundColor = .lightGray
-        hud.show(in: self.mainView.collectionView)
-        
+        mainView.collectionView.setContentOffset(.zero, animated: false)
+
         if let text = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            let hud = JGProgressHUD()
+            hud.textLabel.text = "Loading"
+            hud.backgroundColor = .lightGray
+            hud.show(in: self.mainView.collectionView)
+            
             ImageAPIManager.shared.getImageUrl(page: page, query: text) { data in
                 self.imageList = data
                 
