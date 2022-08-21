@@ -17,6 +17,8 @@ class ImageSelectViewController: BaseViewController {
     
     var selectedImage: UIImage?
     
+    var imageHandler: ((UIImage) -> ())?
+    
     override func loadView() {
         self.view = mainView
     }
@@ -49,7 +51,9 @@ class ImageSelectViewController: BaseViewController {
     @objc func doneSelection() {
         
         //데이터 전달
-        
+        if let image = selectedImage {
+            imageHandler?(image)
+        }
         //화면 내리기
         navigationController?.popViewController(animated: true)
     }

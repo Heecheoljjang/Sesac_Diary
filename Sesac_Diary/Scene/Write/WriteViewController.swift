@@ -50,6 +50,9 @@ class WriteViewController: BaseViewController {
   
     @objc func selectImage() {
         let vc = ImageSelectViewController()
+        vc.imageHandler = { image in
+            self.mainView.mainImageView.image = image
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     

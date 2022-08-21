@@ -12,7 +12,8 @@ class WriteView: BaseView {
     
     let mainImageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         view.layer.cornerRadius = 10
         view.backgroundColor = .systemMint
 

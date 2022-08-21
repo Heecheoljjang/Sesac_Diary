@@ -28,6 +28,11 @@ extension ImageSelectViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell else { return }
+        selectedImage = cell.imageView.image
+    }
+    
 }
 
 extension ImageSelectViewController: UISearchBarDelegate {

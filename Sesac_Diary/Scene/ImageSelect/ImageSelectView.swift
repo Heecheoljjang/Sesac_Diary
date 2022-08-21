@@ -24,6 +24,7 @@ class ImageSelectView: BaseView {
         bar.searchTextField.backgroundColor = .white
         bar.searchBarStyle = .minimal
         bar.searchTextField.textColor = .systemGray
+
         return bar
     }()
     
