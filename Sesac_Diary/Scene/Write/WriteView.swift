@@ -15,7 +15,7 @@ class WriteView: BaseView {
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
-        view.backgroundColor = .systemMint
+        view.backgroundColor = .systemGray
 
         return view
     }()
