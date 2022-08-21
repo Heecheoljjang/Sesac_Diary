@@ -15,10 +15,23 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
-        view.backgroundColor = .white
+        view.backgroundColor = .lightGray
+        view.layer.borderColor = UIColor.clear.cgColor
+        view.layer.borderWidth = 4
         return view
     }()
     
+    override var isSelected: Bool {
+        didSet{
+            if isSelected {
+                imageView.layer.borderColor = UIColor.white.cgColor
+            }
+            else {
+                imageView.layer.borderColor = UIColor.clear.cgColor
+            }
+        }
+    }
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         

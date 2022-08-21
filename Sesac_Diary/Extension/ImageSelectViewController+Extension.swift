@@ -8,6 +8,7 @@
 import UIKit
 
 import JGProgressHUD
+import Kingfisher
 
 extension ImageSelectViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -19,12 +20,14 @@ extension ImageSelectViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
         let url = URL(string: imageList[indexPath.item].regular)
-        let data = try! Data(contentsOf: url!)
-        let image = UIImage(data: data)
-        cell.imageView.image = image
-        
+//        let data = try! Data(contentsOf: url!)
+//        let image = UIImage(data: data)
+//        cell.imageView.image = image
+        cell.imageView.kf.setImage(with: url)
+
         return cell
     }
+    
 }
 
 extension ImageSelectViewController: UISearchBarDelegate {

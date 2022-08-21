@@ -38,6 +38,7 @@ class ImageSelectView: BaseView {
         
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         view.backgroundColor = .lightGray
+        view.allowsMultipleSelection = false
         
         return view
     }()

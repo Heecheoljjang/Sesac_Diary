@@ -15,6 +15,8 @@ class ImageSelectViewController: BaseViewController {
     
     var page: Int = 1
     
+    var selectedImage: UIImage?
+    
     override func loadView() {
         self.view = mainView
     }
