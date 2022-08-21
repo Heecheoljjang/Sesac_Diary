@@ -16,7 +16,7 @@ class ImageAPIManager {
     
     static let shared = ImageAPIManager()
     
-    func getImageUrl(page: Int, query: String, completionHandler: @escaping (String) -> ()) {
+    func getImageUrl(page: Int, query: String, completionHandler: @escaping ([ImageSearchModel]) -> ()) {
         
         let url = EndPoint.imageURL + "page=\(page)&query=\(query)&client_id=\(APIKey.unsplashKey)"
         
@@ -24,9 +24,8 @@ class ImageAPIManager {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print(json)
-                
-                
+                let imageList: [ImageSearchModel] = json["results"].arrayValue.map { ImageSearchModel(full: $0["urls"]["full"].stringValue, raw: $0["urls"]["raw"].stringValue, thumb: $0["urls"]["thumb"].stringValue, regular: $0["urls"]["regular"].stringValue) }
+                completionHandler(imageList)
                 
             case .failure(let error):
                 print(error)

@@ -20,8 +20,20 @@ class ImageSelectView: BaseView {
     
     let searchBar: UISearchBar = {
         let bar = UISearchBar()
-        
+        bar.barTintColor = .lightGray
+        bar.searchTextField.backgroundColor = .white
+        bar.searchBarStyle = .minimal
+        bar.searchTextField.textColor = .lightGray
         return bar
+    }()
+    
+    let collectionView: UICollectionView = {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        
+        let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        
+        return view
     }()
     
     override init(frame: CGRect) {
@@ -47,6 +59,8 @@ class ImageSelectView: BaseView {
         
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(lineView.snp.bottom)
+            make.leading.trailing.equalTo(self)
+            make.height.equalTo(60)
         }
         
         lineView.snp.makeConstraints { make in

@@ -11,6 +11,8 @@ class ImageSelectViewController: BaseViewController {
     
     var mainView = ImageSelectView()
     
+    var imageList: [ImageSearchModel] = []
+    
     override func loadView() {
         self.view = mainView
     }
@@ -18,8 +20,10 @@ class ImageSelectViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ImageAPIManager.shared.getImageUrl(page: 1, query: "hee") { value in
+        ImageAPIManager.shared.getImageUrl(page: 1, query: "desk") { value in
+            self.imageList = value
             
+            //mainView.collectionView.reloadData()
         }
             
     }
