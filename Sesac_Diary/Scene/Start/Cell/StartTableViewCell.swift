@@ -19,17 +19,10 @@ class StartTableViewCell: BaseTableViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-//        label.font = .systemFont(ofSize: 18, weight: .regular)
         
         return label
     }()
-    
-//    let dateLabel: UILabel = {
-//        let label = UILabel()
-//
-//        return label
-//    }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: StartTableViewCell.identifier)
         
