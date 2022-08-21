@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9731733B28B227E20068561D /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731733A28B227E20068561D /* ImageCollectionViewCell.swift */; };
+		9731733D28B2281F0068561D /* ImageSelectViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731733C28B2281F0068561D /* ImageSelectViewController+Extension.swift */; };
+		9731733F28B22B430068561D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731733E28B22B430068561D /* BaseCollectionViewCell.swift */; };
+		9731734328B239100068561D /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734228B239100068561D /* UICollectionViewCell+Extension.swift */; };
+		9731734628B24A240068561D /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 9731734528B24A240068561D /* JGProgressHUD */; };
 		97D3D56A28B0C94700BECC8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56928B0C94700BECC8B /* AppDelegate.swift */; };
 		97D3D56C28B0C94700BECC8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56B28B0C94700BECC8B /* SceneDelegate.swift */; };
 		97D3D56E28B0C94700BECC8B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56D28B0C94700BECC8B /* StartViewController.swift */; };
@@ -35,6 +40,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9731733A28B227E20068561D /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		9731733C28B2281F0068561D /* ImageSelectViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageSelectViewController+Extension.swift"; sourceTree = "<group>"; };
+		9731733E28B22B430068561D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		9731734228B239100068561D /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		97D3D56628B0C94700BECC8B /* Sesac_Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sesac_Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D3D56928B0C94700BECC8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D3D56B28B0C94700BECC8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,12 +78,21 @@
 				97E9BCC528B1EF2B00DEC5C0 /* Kingfisher in Frameworks */,
 				97E9BCCB28B1EF3F00DEC5C0 /* SwiftyJSON in Frameworks */,
 				97D3D59728B0F99100BECC8B /* SnapKit in Frameworks */,
+				9731734628B24A240068561D /* JGProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9731733928B227890068561D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9731733A28B227E20068561D /* ImageCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		97D3D55D28B0C94700BECC8B = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +135,7 @@
 			children = (
 				97D3D57E28B0C9FC00BECC8B /* BaseViewController.swift */,
 				97D3D58028B0CA0500BECC8B /* BaseView.swift */,
+				9731733E28B22B430068561D /* BaseCollectionViewCell.swift */,
 				97D3D59328B0EB4C00BECC8B /* CustomTitleTextField.swift */,
 				97D3D59E28B117CA00BECC8B /* CustomTextView.swift */,
 			);
@@ -165,6 +184,7 @@
 			children = (
 				97D3D58F28B0E44900BECC8B /* ImageSelectViewController.swift */,
 				97D3D59128B0E45000BECC8B /* ImageSelectView.swift */,
+				9731733928B227890068561D /* Cell */,
 			);
 			path = ImageSelect;
 			sourceTree = "<group>";
@@ -172,6 +192,8 @@
 		97D3D5A028B13D3C00BECC8B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9731733C28B2281F0068561D /* ImageSelectViewController+Extension.swift */,
+				9731734228B239100068561D /* UICollectionViewCell+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -221,6 +243,7 @@
 				97E9BCC428B1EF2B00DEC5C0 /* Kingfisher */,
 				97E9BCC728B1EF3400DEC5C0 /* Alamofire */,
 				97E9BCCA28B1EF3F00DEC5C0 /* SwiftyJSON */,
+				9731734528B24A240068561D /* JGProgressHUD */,
 			);
 			productName = Sesac_Diary;
 			productReference = 97D3D56628B0C94700BECC8B /* Sesac_Diary.app */;
@@ -255,6 +278,7 @@
 				97E9BCC328B1EF2B00DEC5C0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				97E9BCC628B1EF3400DEC5C0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				97E9BCC928B1EF3F00DEC5C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				9731734428B24A240068561D /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 97D3D56728B0C94700BECC8B /* Products */;
 			projectDirPath = "";
@@ -286,13 +310,17 @@
 			files = (
 				97D3D56E28B0C94700BECC8B /* StartViewController.swift in Sources */,
 				97D3D57F28B0C9FC00BECC8B /* BaseViewController.swift in Sources */,
+				9731734328B239100068561D /* UICollectionViewCell+Extension.swift in Sources */,
 				97D3D58E28B0E43C00BECC8B /* WriteView.swift in Sources */,
 				97D3D58128B0CA0500BECC8B /* BaseView.swift in Sources */,
 				97D3D58528B0DF8B00BECC8B /* StartView.swift in Sources */,
 				97E9BCD428B1F33900DEC5C0 /* EndPoint.swift in Sources */,
+				9731733B28B227E20068561D /* ImageCollectionViewCell.swift in Sources */,
 				97D3D56A28B0C94700BECC8B /* AppDelegate.swift in Sources */,
+				9731733D28B2281F0068561D /* ImageSelectViewController+Extension.swift in Sources */,
 				97D3D56C28B0C94700BECC8B /* SceneDelegate.swift in Sources */,
 				97D3D58C28B0E43500BECC8B /* WriteViewController.swift in Sources */,
+				9731733F28B22B430068561D /* BaseCollectionViewCell.swift in Sources */,
 				97D3D59428B0EB4C00BECC8B /* CustomTitleTextField.swift in Sources */,
 				97D3D59F28B117CA00BECC8B /* CustomTextView.swift in Sources */,
 				97D3D59228B0E45000BECC8B /* ImageSelectView.swift in Sources */,
@@ -520,6 +548,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9731734428B24A240068561D /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		97D3D59528B0F99100BECC8B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -555,6 +591,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9731734528B24A240068561D /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9731734428B24A240068561D /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
 		97D3D59628B0F99100BECC8B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97D3D59528B0F99100BECC8B /* XCRemoteSwiftPackageReference "SnapKit" */;

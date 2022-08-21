@@ -13,6 +13,8 @@ class ImageSelectViewController: BaseViewController {
     
     var imageList: [ImageSearchModel] = []
     
+    var page: Int = 1
+    
     override func loadView() {
         self.view = mainView
     }
@@ -20,12 +22,16 @@ class ImageSelectViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ImageAPIManager.shared.getImageUrl(page: 1, query: "desk") { value in
-            self.imageList = value
-            
-            //mainView.collectionView.reloadData()
-        }
-            
+        mainView.searchBar.delegate = self
+                
+        setUpCollectionView()
+                    
+    }
+    
+    func setUpCollectionView() {
+        mainView.collectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
+        mainView.collectionView.delegate = self
+        mainView.collectionView.dataSource = self
     }
     
     override func setUpNavigationController() {
@@ -46,3 +52,4 @@ class ImageSelectViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
 }
+

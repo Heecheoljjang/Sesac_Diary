@@ -34,10 +34,18 @@ class WriteViewController: BaseViewController {
 
     override func setUpNavigationController() {
         super.setUpNavigationController()
-        
+        let doneButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneWriting))
+        navigationItem.rightBarButtonItem = doneButton
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white ]
 
         title = "글 쓰기"
+    }
+    
+    @objc func doneWriting() {
+        //데이터 전달
+        
+        //pop
+        navigationController?.popViewController(animated: true)
     }
   
     @objc func selectImage() {

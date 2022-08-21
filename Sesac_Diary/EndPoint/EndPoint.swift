@@ -8,5 +8,5 @@
 import Foundation
 
 enum EndPoint {
-    static let imageURL = "https://api.unsplash.com/search/photos?"
+    static let imageURL = "https://api.unsplash.com/search/photos?per_page=30&"
 }
