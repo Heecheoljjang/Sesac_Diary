@@ -10,7 +10,7 @@ import UIKit
 class WriteViewController: BaseViewController {
     
     var mainView = WriteView()
-    
+        
     override func loadView() {
         self.view = mainView
     }
@@ -44,29 +44,39 @@ extension WriteViewController: UITextViewDelegate {
 
         mainView.dateTextField.endEditing(true)
         mainView.titleTextField.endEditing(true)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         return true
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .white.withAlphaComponent(0.6) {
+            textView.text = ""
+            textView.textColor = .white
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "내용을 입력해주세요"
+            textView.textColor = .white.withAlphaComponent(0.6)
+        }
+    }
 
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-//
     @objc func keyboardWillChange(_ sender: Notification) {
         
         guard let keyboardFrame = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
         let keyboardHeight = keyboardFrame.cgRectValue.size.height
 
-        if mainView.frame.origin.y == 0 {
-            mainView.frame.origin.y = -keyboardHeight
+        if navigationController?.view.frame.origin.y == 0 {
+            navigationController?.view.frame.origin.y = -keyboardHeight
         }
     }
     @objc func keyboardWillHide(_ sender: Notification) {
-        mainView.frame.origin.y = 0 // 다시 원상복구
+        navigationController?.view.frame.origin.y = 0
     }
 }
 

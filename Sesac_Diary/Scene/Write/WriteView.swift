@@ -57,6 +57,8 @@ class WriteView: BaseView {
     let bodyTextView: CustomTextView = {
         let view = CustomTextView()
         
+        view.attributedText = NSAttributedString(string: "내용을 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.6)])
+        
         return view
     }()
         
