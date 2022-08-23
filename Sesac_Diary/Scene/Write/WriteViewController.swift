@@ -131,6 +131,8 @@ class WriteViewController: BaseViewController {
         let takePhoto = UIAlertAction(title: "사진 찍기", style: .default) { _ in
             let picker = UIImagePickerController()
             
+            picker.delegate = self
+            
             UIImagePickerController.isSourceTypeAvailable(.camera)
             
             picker.sourceType = .camera
@@ -239,7 +241,7 @@ extension WriteViewController: UITextFieldDelegate {
     }
 }
 
-extension WriteViewController: PHPickerViewControllerDelegate {
+extension WriteViewController: PHPickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         // 이미지뷰에 띄우기
@@ -254,7 +256,13 @@ extension WriteViewController: PHPickerViewControllerDelegate {
                 self.mainView.mainImageView.image = image
             }
         }
-        
     }
-
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[.originalImage] as? UIImage {
+            mainView.mainImageView.image = image
+            dismiss(animated: true)
+        }
+    }
 }
