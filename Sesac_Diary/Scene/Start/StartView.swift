@@ -21,9 +21,12 @@ class StartView: BaseView {
     let tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = .lightGray
+        view.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         return view
     }()
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

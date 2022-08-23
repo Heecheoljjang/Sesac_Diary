@@ -52,30 +52,37 @@ class WriteViewController: BaseViewController {
     @objc func doneWriting() {
         //데이터 전달
         //데이터 다 있는지
-//        if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
-//            if mainView.bodyTextView.text != "내용을 입력해주세요" {
+        if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
+            if mainView.bodyTextView.text != "내용을 입력해주세요" {
 //                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: mainView.bodyTextView.text)
 //                diaryDataHandler?(diary)
-//                //pop
-//                navigationController?.popViewController(animated: true)
-//            } else {
+                
+                //이미지 스트링으로
+                let data = mainView.mainImageView.image?.pngData()?.base64EncodedString(options: .endLineWithLineFeed)
+                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: data)
+                
+                try! localRealm.write {
+                    localRealm.add(task)
+                }
+                
+                //pop
+                navigationController?.popViewController(animated: true)
+            } else {
 //                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: "")
 //                diaryDataHandler?(diary)
-//                //pop
-//                navigationController?.popViewController(animated: true)
-//            }
-//        } else {
-//            showAlert()
-//        }
-        
-        //realm
-        let task = UserDiary(diaryTitle: "일기\(Int.random(in: 1...1000))", diaryContent: "테스트", diaryDate: Date(), registerDate: Date(), ImageURL: nil) // => Record 추가
-        
-        try! localRealm.write {
-            localRealm.add(task) //실질적으로 create
-            print("succeed", localRealm.configuration.fileURL!)
+                //이미지 스트링으로
+                let data = mainView.mainImageView.image?.pngData()?.base64EncodedString(options: .endLineWithLineFeed)
+                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: data)
+                
+                try! localRealm.write {
+                    localRealm.add(task)
+                }
+                //pop
+                navigationController?.popViewController(animated: true)
+            }
+        } else {
+            showAlert()
         }
-        navigationController?.popViewController(animated: true)
     }
   
     @objc func selectImage() {

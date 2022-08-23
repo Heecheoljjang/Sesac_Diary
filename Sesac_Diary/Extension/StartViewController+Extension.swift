@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift // 1. 임포트
+import SwiftUI
 
 extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -24,14 +25,22 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
 //        } else {
 //            cell.mainImageView.backgroundColor = .systemGray4
 //        }
+        //이미지 다시 이미지로
+        
+        let imageData = tasks[indexPath.row].imageString
+        
+        if imageData != nil {
+            cell.mainImageView.image = UIImage(data: Data(base64Encoded: imageData!, options: .ignoreUnknownCharacters)!)
+        }
         cell.titleLabel.text = tasks[indexPath.row].diaryTitle
+        cell.dateLabel.text = tasks[indexPath.row].diaryDate
         
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 76
+        return 100
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

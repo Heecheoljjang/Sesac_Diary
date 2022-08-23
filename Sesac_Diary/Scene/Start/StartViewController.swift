@@ -79,11 +79,9 @@ class StartViewController: BaseViewController {
     @objc func sortList() {
         //더 다양하게 해보기
         tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "registerDate", ascending: true)
-        //mainView.tableView.reloadData()
     }
     
     @objc func filterList() {
-//        tasks = localRealm.objects(UserDiary.self).filter("diaryTitle = '일기313'")
         tasks = localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS[c] 'a'") //[c]쓰면 대소문자에 상관ㅇ벗이
     }
 
