@@ -38,7 +38,6 @@ class WriteViewController: BaseViewController {
         mainView.mainImageView.addGestureRecognizer(imageViewTapGesture)
         
         mainView.imageSelectButton.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
-        //setUpButton()
     }
 
     override func setUpNavigationController() {
@@ -48,47 +47,6 @@ class WriteViewController: BaseViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white ]
 
         title = "글 쓰기"
-    }
-    
-    func setUpButton() {
-        let menuItems: [UIAction] = [
-            UIAction(title: "사진 찍기", image: UIImage(systemName: "camera"), identifier: nil, discoverabilityTitle: nil, handler: { action in
-                
-                let picker = UIImagePickerController()
-                
-                UIImagePickerController.isSourceTypeAvailable(.camera)
-                
-                picker.sourceType = .camera
-                
-                picker.allowsEditing = true
-                
-                self.present(picker, animated: true)
-                
-                
-            }), UIAction(title: "갤러리", image: UIImage(systemName: "photo"), identifier: nil, discoverabilityTitle: nil, handler: { action in
-                
-                var configuration = PHPickerConfiguration()
-                configuration.selectionLimit = 1
-                configuration.filter = .any(of: [.images])
-                
-                let picker = PHPickerViewController(configuration: configuration)
-                picker.delegate = self
-                
-                self.present(picker, animated: true)
-                
-            }), UIAction(title: "이미지 찾기", image: UIImage(systemName: "magnifyingglass"), identifier: nil, discoverabilityTitle: nil, handler: { action in
-                
-                let vc = ImageSelectViewController()
-                vc.imageHandler = { image in
-                    self.mainView.mainImageView.image = image
-                }
-                self.navigationController?.pushViewController(vc, animated: true)
-            })
-        ]
-        let menu = UIMenu(title: "이미지 선택", image: nil, identifier: nil, options: .displayInline, children: menuItems)
-        
-        mainView.imageSelectButton.menu = menu
-        
     }
     
     @objc func doneWriting() {
