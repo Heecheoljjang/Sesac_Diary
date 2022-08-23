@@ -75,15 +75,15 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let favorite = UIContextualAction(style: .normal, title: "즐겨찾기") { action, view, completionHandler in
-            
-            print("favorite button clicked")
-        }
-        let example = UIContextualAction(style: .normal, title: "예시") { action, view, completionHandler in
-            
-            print("favorite button clicked")
-        }
         
-        return UISwipeActionsConfiguration(actions: [favorite, example])
+        let delete = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
+            
+            try! self.localRealm.write {
+                self.localRealm.delete(self.tasks[indexPath.row])
+            }
+            self.fetchRealm()
+        }
+        delete.image = UIImage(systemName: "trash")
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }
