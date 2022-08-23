@@ -17,6 +17,7 @@ class UserDiary: Object {
     @Persisted var diaryContent: String?
     @Persisted var diaryDate: String
     @Persisted var registerDate = Date()
+    @Persisted var favorite: Bool = false
     @Persisted var imageString: String?
     
     //PK(필수): Int, UUID, ObjectID
