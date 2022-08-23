@@ -63,6 +63,7 @@ class WriteViewController: BaseViewController {
                 
                 try! localRealm.write {
                     localRealm.add(task)
+                    print(localRealm.configuration.fileURL!)
                 }
                 
                 //pop

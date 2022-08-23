@@ -31,10 +31,11 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         
         if imageData != nil {
             cell.mainImageView.image = UIImage(data: Data(base64Encoded: imageData!, options: .ignoreUnknownCharacters)!)
+        } else {
+            cell.mainImageView.image = nil
         }
         cell.titleLabel.text = tasks[indexPath.row].diaryTitle
         cell.dateLabel.text = tasks[indexPath.row].diaryDate
-        
         
         return cell
     }
@@ -67,9 +68,9 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         self.fetchRealm()
         }
         //realm 데이터 기준으로 이미지 확ㅇ니
-        let image = tasks[indexPath.row].favorite ? "star.fill" : "star" // record에서 특정 컬럼 하나만 변경
-        favorite.image = UIImage(systemName: image)
-        favorite.backgroundColor = .systemTeal
+//        let image = tasks[indexPath.row].favorite ? "star.fill" : "star" // record에서 특정 컬럼 하나만 변경
+//        favorite.image = UIImage(systemName: image)
+//        favorite.backgroundColor = .systemTeal
 
         return UISwipeActionsConfiguration(actions: [favorite])
     }

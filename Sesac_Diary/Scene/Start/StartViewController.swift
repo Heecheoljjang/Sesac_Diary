@@ -31,6 +31,8 @@ class StartViewController: BaseViewController {
         
         setUpTableView()
         
+        setUpButton()
+        
         //object안에는 테이블이름.self
         //ascending은 오름내림차순(Bool), 기준이 key
         
@@ -42,19 +44,34 @@ class StartViewController: BaseViewController {
         fetchRealm()
     }
     
+    func setUpButton() {
+        let menus: [UIAction] = [
+            UIAction(title: "제목순", image: nil, identifier: nil, discoverabilityTitle: nil, handler: { action in
+                self.tasks = self.localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
+                self.mainView.tableView.reloadData()
+            }), UIAction(title: "날짜순", image: nil, identifier: nil, discoverabilityTitle: nil, handler: { action in
+                self.tasks = self.localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryDate", ascending: false)
+                self.mainView.tableView.reloadData()
+            })
+        ]
+        
+        let sortButtonMenu = UIMenu(title: "정렬", image: nil, identifier: nil, options: .displayInline, children: menus)
+        let sortButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "line.3.horizontal.circle"), primaryAction: nil, menu: sortButtonMenu)
+        navigationItem.leftBarButtonItem = sortButton
+        
+        let addButton = UIBarButtonItem(title: "글 쓰기", style: .plain, target: self, action: #selector(startWriting))
+        
+        self.navigationItem.rightBarButtonItem = addButton
+    }
+    
     func fetchRealm() {
         //3. 정렬 후 tasks에 담기 -> 그대로 사용하는건 위험할 수도 있음.
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: false)
+        tasks = localRealm.objects(UserDiary.self)
     }
     
     override func setUpNavigationController() {
         super.setUpNavigationController()
         
-        let addButton = UIBarButtonItem(title: "글 쓰기", style: .plain, target: self, action: #selector(startWriting))
-        let sortButton = UIBarButtonItem(title: "정렬", style: .done, target: self, action: #selector(sortList))
-        let filterButton = UIBarButtonItem(title: "필터", style: .done, target: self, action: #selector(filterList))
-        self.navigationItem.rightBarButtonItem = addButton
-        self.navigationItem.leftBarButtonItems = [sortButton, filterButton]
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white ]
         title = "내 다이어리"
@@ -75,15 +92,5 @@ class StartViewController: BaseViewController {
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    @objc func sortList() {
-        //더 다양하게 해보기
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "registerDate", ascending: true)
-    }
-    
-    @objc func filterList() {
-        tasks = localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS[c] 'a'") //[c]쓰면 대소문자에 상관ㅇ벗이
-    }
-
 }
 

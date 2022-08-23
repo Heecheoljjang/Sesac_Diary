@@ -17,7 +17,6 @@ class UserDiary: Object {
     @Persisted var diaryContent: String?
     @Persisted var diaryDate: String
     @Persisted var registerDate = Date()
-    @Persisted var favorite: Bool
     @Persisted var imageString: String?
     
     //PK(필수): Int, UUID, ObjectID
@@ -30,7 +29,6 @@ class UserDiary: Object {
         self.diaryContent = diaryContent
         self.diaryDate = diaryDate
         self.registerDate = registerDate
-        self.favorite = false
         self.imageString = imageString
     }
 }
