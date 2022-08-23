@@ -41,6 +41,8 @@ class ImageSelectView: BaseView {
         view.backgroundColor = .lightGray
         view.allowsMultipleSelection = false
         
+        
+        
         return view
     }()
     

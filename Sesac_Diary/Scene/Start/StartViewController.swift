@@ -16,7 +16,11 @@ class StartViewController: BaseViewController {
     
     let localRealm = try! Realm() //가져오기 2번쨰
     
-    var tasks: Results<UserDiary>!
+    var tasks: Results<UserDiary>! {
+        didSet {
+            mainView.tableView.reloadData()
+        }
+    }
     
     override func loadView() {
         self.view = mainView
@@ -29,22 +33,28 @@ class StartViewController: BaseViewController {
         
         //object안에는 테이블이름.self
         //ascending은 오름내림차순(Bool), 기준이 key
-        //3. 정렬 후 tasks에 담기 -> 그대로 사용하는건 위험할 수도 있음.
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: false)
-        print(tasks)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(diaryList.count)
-        mainView.tableView.reloadData()
+        
+        fetchRealm()
+    }
+    
+    func fetchRealm() {
+        //3. 정렬 후 tasks에 담기 -> 그대로 사용하는건 위험할 수도 있음.
+        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: false)
     }
     
     override func setUpNavigationController() {
         super.setUpNavigationController()
         
         let addButton = UIBarButtonItem(title: "글 쓰기", style: .plain, target: self, action: #selector(startWriting))
+        let sortButton = UIBarButtonItem(title: "정렬", style: .done, target: self, action: #selector(sortList))
+        let filterButton = UIBarButtonItem(title: "필터", style: .done, target: self, action: #selector(filterList))
         self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.leftBarButtonItems = [sortButton, filterButton]
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white ]
         title = "내 다이어리"
@@ -64,6 +74,17 @@ class StartViewController: BaseViewController {
             
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func sortList() {
+        //더 다양하게 해보기
+        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "registerDate", ascending: true)
+        //mainView.tableView.reloadData()
+    }
+    
+    @objc func filterList() {
+//        tasks = localRealm.objects(UserDiary.self).filter("diaryTitle = '일기313'")
+        tasks = localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS[c] 'a'") //[c]쓰면 대소문자에 상관ㅇ벗이
     }
 
 }

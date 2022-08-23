@@ -51,7 +51,7 @@ class StartTableViewCell: BaseTableViewCell {
             make.leading.equalTo(self).offset(12)
             make.top.equalTo(self).offset(12)
             make.bottom.equalTo(self).offset(-12)
-            make.width.equalTo(40)
+            make.width.equalTo(52)
         }
         
         titleLabel.snp.makeConstraints { make in

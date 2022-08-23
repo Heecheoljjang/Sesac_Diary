@@ -31,7 +31,50 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64
+        return 76
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        // UIContextualAction이랑 UIView는 거의 안씀.
+        let favorite = UIContextualAction(style: .normal, title: "즐겨찾기") { action, view, completionHandler in
+            
+            //realm 데이터 업데이트
+            try! self.localRealm.write{
+                //하나의 레코드에서 특정 컬럼 하나만 변경
+                //self.tasks[indexPath.row].favorite = !self.tasks[indexPath.row].favorite
+                
+                //하나의 테이블에 특정 컬럼 전체 값을 변경
+//                self.tasks.setValue(true, forKey: "favorite")
+                
+                //하나의 레코드에서 여러 컬럼들이 변경
+//                self.localRealm.create(UserDiary.self, value: ["ObjectId": tasks[indexPath.row].objectID, "diaryTitle": "ㅅㄴㅁㅇㄹ"], update: .modified)
+                
+                
+            
+        }
+        // 1. 스와이프한 셀 하나만 리로드로우 -> 상대적으로 효율성
+        //2. 데이터가 변경됐으니 다시 realm에서 데이터 가져오기 -> didSet 일관적형태로 갱신
+        self.fetchRealm()
+        }
+        //realm 데이터 기준으로 이미지 확ㅇ니
+        let image = tasks[indexPath.row].favorite ? "star.fill" : "star" // record에서 특정 컬럼 하나만 변경
+        favorite.image = UIImage(systemName: image)
+        favorite.backgroundColor = .systemTeal
+
+        return UISwipeActionsConfiguration(actions: [favorite])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let favorite = UIContextualAction(style: .normal, title: "즐겨찾기") { action, view, completionHandler in
+            
+            print("favorite button clicked")
+        }
+        let example = UIContextualAction(style: .normal, title: "예시") { action, view, completionHandler in
+            
+            print("favorite button clicked")
+        }
+        
+        return UISwipeActionsConfiguration(actions: [favorite, example])
+    }
 }
