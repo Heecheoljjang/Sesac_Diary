@@ -9,6 +9,7 @@ import UIKit
 
 //1. 임포트
 import RealmSwift
+import PhotosUI
 
 class WriteViewController: BaseViewController {
 
@@ -37,7 +38,7 @@ class WriteViewController: BaseViewController {
         mainView.mainImageView.addGestureRecognizer(imageViewTapGesture)
         
         mainView.imageSelectButton.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
-                
+        //setUpButton()
     }
 
     override func setUpNavigationController() {
@@ -49,16 +50,55 @@ class WriteViewController: BaseViewController {
         title = "글 쓰기"
     }
     
+    func setUpButton() {
+        let menuItems: [UIAction] = [
+            UIAction(title: "사진 찍기", image: UIImage(systemName: "camera"), identifier: nil, discoverabilityTitle: nil, handler: { action in
+                
+                let picker = UIImagePickerController()
+                
+                UIImagePickerController.isSourceTypeAvailable(.camera)
+                
+                picker.sourceType = .camera
+                
+                picker.allowsEditing = true
+                
+                self.present(picker, animated: true)
+                
+                
+            }), UIAction(title: "갤러리", image: UIImage(systemName: "photo"), identifier: nil, discoverabilityTitle: nil, handler: { action in
+                
+                var configuration = PHPickerConfiguration()
+                configuration.selectionLimit = 1
+                configuration.filter = .any(of: [.images])
+                
+                let picker = PHPickerViewController(configuration: configuration)
+                picker.delegate = self
+                
+                self.present(picker, animated: true)
+                
+            }), UIAction(title: "이미지 찾기", image: UIImage(systemName: "magnifyingglass"), identifier: nil, discoverabilityTitle: nil, handler: { action in
+                
+                let vc = ImageSelectViewController()
+                vc.imageHandler = { image in
+                    self.mainView.mainImageView.image = image
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+        ]
+        let menu = UIMenu(title: "이미지 선택", image: nil, identifier: nil, options: .displayInline, children: menuItems)
+        
+        mainView.imageSelectButton.menu = menu
+        
+    }
+    
     @objc func doneWriting() {
         //데이터 전달
         //데이터 다 있는지
         if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
             if mainView.bodyTextView.text != "내용을 입력해주세요" {
-//                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: mainView.bodyTextView.text)
-//                diaryDataHandler?(diary)
                 
                 //이미지 스트링으로
-                let data = mainView.mainImageView.image?.pngData()?.base64EncodedString(options: .endLineWithLineFeed)
+                let data = mainView.mainImageView.image?.jpegData(compressionQuality: 0.1)?.base64EncodedString(options: .endLineWithLineFeed)
                 let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: data)
                 
                 try! localRealm.write {
@@ -69,10 +109,9 @@ class WriteViewController: BaseViewController {
                 //pop
                 navigationController?.popViewController(animated: true)
             } else {
-//                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: "")
-//                diaryDataHandler?(diary)
+
                 //이미지 스트링으로
-                let data = mainView.mainImageView.image?.pngData()?.base64EncodedString(options: .endLineWithLineFeed)
+                let data = mainView.mainImageView.image?.jpegData(compressionQuality: 0.1)?.base64EncodedString(options: .endLineWithLineFeed)
                 let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: data)
                 
                 try! localRealm.write {
@@ -87,11 +126,45 @@ class WriteViewController: BaseViewController {
     }
   
     @objc func selectImage() {
-        let vc = ImageSelectViewController()
-        vc.imageHandler = { image in
-            self.mainView.mainImageView.image = image
+
+        let actionSheet = UIAlertController(title: "이미지 선택", message: nil, preferredStyle: .actionSheet)
+        let takePhoto = UIAlertAction(title: "사진 찍기", style: .default) { _ in
+            let picker = UIImagePickerController()
+            
+            UIImagePickerController.isSourceTypeAvailable(.camera)
+            
+            picker.sourceType = .camera
+            
+            picker.allowsEditing = true
+            
+            self.present(picker, animated: true)
         }
-        navigationController?.pushViewController(vc, animated: true)
+        let openAlbum = UIAlertAction(title: "갤러리", style: .default) { _ in
+            var configuration = PHPickerConfiguration()
+            configuration.selectionLimit = 1
+            configuration.filter = .any(of: [.images])
+            
+            let picker = PHPickerViewController(configuration: configuration)
+            picker.delegate = self
+            
+            self.present(picker, animated: true)
+        }
+        
+        let selectImage = UIAlertAction(title: "이미지 찾기", style: .default) { _ in
+            let vc = ImageSelectViewController()
+            vc.imageHandler = { image in
+                self.mainView.mainImageView.image = image
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        actionSheet.addAction(takePhoto)
+        actionSheet.addAction(openAlbum)
+        actionSheet.addAction(selectImage)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true)
     }
     
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -164,4 +237,24 @@ extension WriteViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
     }
+}
+
+extension WriteViewController: PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        // 이미지뷰에 띄우기
+        
+        picker.dismiss(animated: true)
+        
+        let itemProvider = results.first?.itemProvider
+        
+        itemProvider?.loadObject(ofClass: UIImage.self) { image, error in
+            let image = image as? UIImage
+            DispatchQueue.main.async {
+                self.mainView.mainImageView.image = image
+            }
+        }
+        
+    }
+
 }

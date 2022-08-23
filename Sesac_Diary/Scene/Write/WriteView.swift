@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import PhotosUI
 
 class WriteView: BaseView {
     
@@ -70,8 +71,9 @@ class WriteView: BaseView {
         configuration.baseBackgroundColor = .white
         configuration.baseForegroundColor = .systemGray
         configuration.cornerStyle = .capsule
-        
+
         button.configuration = configuration
+       
         return button
     }()
     
