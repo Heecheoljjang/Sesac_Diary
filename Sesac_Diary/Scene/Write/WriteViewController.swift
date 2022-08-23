@@ -7,9 +7,15 @@
 
 import UIKit
 
+//1. 임포트
+import RealmSwift
+
 class WriteViewController: BaseViewController {
-    
+
     var mainView = WriteView()
+    
+    //2. realm테이블에 데이터를 CRUD할 때, Realm 테이블 경로에 접근을 하기위한 코드
+    let localRealm = try! Realm() //
     
     var diaryDataHandler: ((Diary) -> ())?
         
@@ -46,21 +52,30 @@ class WriteViewController: BaseViewController {
     @objc func doneWriting() {
         //데이터 전달
         //데이터 다 있는지
-        if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
-            if mainView.bodyTextView.text != "내용을 입력해주세요" {
-                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: mainView.bodyTextView.text)
-                diaryDataHandler?(diary)
-                //pop
-                navigationController?.popViewController(animated: true)
-            } else {
-                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: "")
-                diaryDataHandler?(diary)
-                //pop
-                navigationController?.popViewController(animated: true)
-            }
-        } else {
-            showAlert()
+//        if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
+//            if mainView.bodyTextView.text != "내용을 입력해주세요" {
+//                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: mainView.bodyTextView.text)
+//                diaryDataHandler?(diary)
+//                //pop
+//                navigationController?.popViewController(animated: true)
+//            } else {
+//                let diary = Diary(image: mainView.mainImageView.image, title: mainView.titleTextField.text!, date: mainView.dateTextField.text!, body: "")
+//                diaryDataHandler?(diary)
+//                //pop
+//                navigationController?.popViewController(animated: true)
+//            }
+//        } else {
+//            showAlert()
+//        }
+        
+        //realm
+        let task = UserDiary(diaryTitle: "일기\(Int.random(in: 1...1000))", diaryContent: "테스트", diaryDate: Date(), registerDate: Date(), ImageURL: nil) // => Record 추가
+        
+        try! localRealm.write {
+            localRealm.add(task) //실질적으로 create
+            print("succeed", localRealm.configuration.fileURL!)
         }
+        navigationController?.popViewController(animated: true)
     }
   
     @objc func selectImage() {

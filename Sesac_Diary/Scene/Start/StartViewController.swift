@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 class StartViewController: BaseViewController {
 
     var mainView = StartView()
     
     var diaryList: [Diary] = []
+    
+    let localRealm = try! Realm() //가져오기 2번쨰
+    
+    var tasks: Results<UserDiary>!
     
     override func loadView() {
         self.view = mainView
@@ -21,6 +26,12 @@ class StartViewController: BaseViewController {
         super.viewDidLoad()
         
         setUpTableView()
+        
+        //object안에는 테이블이름.self
+        //ascending은 오름내림차순(Bool), 기준이 key
+        //3. 정렬 후 tasks에 담기 -> 그대로 사용하는건 위험할 수도 있음.
+        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: false)
+        print(tasks)
     }
     
     override func viewWillAppear(_ animated: Bool) {
