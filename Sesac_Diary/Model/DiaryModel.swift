@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct Diary {
-    let image: UIImage?
+    let image: String?
     let title: String
     let date: String
     let body: String

@@ -7,7 +7,7 @@
 
 import UIKit
 import RealmSwift // 1. 임포트
-import SwiftUI
+
 
 extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -25,6 +25,14 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.dateLabel.text = tasks[indexPath.row].diaryDate
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        
+        vc.diary = Diary(image: "\(tasks[indexPath.row].objectID).jpg", title: tasks[indexPath.row].diaryTitle, date: tasks[indexPath.row].diaryDate, body: tasks[indexPath.row].diaryContent ?? "")
+        
+        transition(vc, transitionSytle: .push)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,9 +58,9 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
             }
         // 1. 스와이프한 셀 하나만 리로드로우 -> 상대적으로 효율성
         //2. 데이터가 변경됐으니 다시 realm에서 데이터 가져오기 -> didSet 일관적형태로 갱신
-        self.fetchRealm()
+            self.fetchRealm()
         }
-        
+                       
         //realm 데이터 기준으로 이미지 확ㅇ니
         let image = tasks[indexPath.row].favorite ? "star.fill" : "star" // record에서 특정 컬럼 하나만 변경
         favorite.image = UIImage(systemName: image)
@@ -70,10 +78,9 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
             try! self.localRealm.write {
                 self.localRealm.delete(self.tasks[indexPath.row])
             }
-            self.fetchRealm()
-            
-            self.removeImageFromDocument(fileName: "\(self.tasks[indexPath.row].objectID).jpg")
+            self.tasks = self.localRealm.objects(UserDiary.self)
         }
+        self.removeImageFromDocument(fileName: "\(self.tasks[indexPath.row].objectID).jpg")
         delete.image = UIImage(systemName: "trash")
         return UISwipeActionsConfiguration(actions: [delete])
     }

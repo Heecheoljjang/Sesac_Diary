@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9719A57528B63C8C000FBB9D /* BackupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9719A57428B63C8C000FBB9D /* BackupTableViewCell.swift */; };
 		9719A57728B6402F000FBB9D /* BackupViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9719A57628B6402F000FBB9D /* BackupViewController+Extension.swift */; };
+		9719A57A28B658EC000FBB9D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9719A57928B658EC000FBB9D /* DetailViewController.swift */; };
+		9719A57C28B658F2000FBB9D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9719A57B28B658F2000FBB9D /* DetailView.swift */; };
 		9731733B28B227E20068561D /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731733A28B227E20068561D /* ImageCollectionViewCell.swift */; };
 		9731733D28B2281F0068561D /* ImageSelectViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731733C28B2281F0068561D /* ImageSelectViewController+Extension.swift */; };
 		9731733F28B22B430068561D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731733E28B22B430068561D /* BaseCollectionViewCell.swift */; };
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		9719A57428B63C8C000FBB9D /* BackupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTableViewCell.swift; sourceTree = "<group>"; };
 		9719A57628B6402F000FBB9D /* BackupViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupViewController+Extension.swift"; sourceTree = "<group>"; };
+		9719A57928B658EC000FBB9D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9719A57B28B658F2000FBB9D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		9731733A28B227E20068561D /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9731733C28B2281F0068561D /* ImageSelectViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageSelectViewController+Extension.swift"; sourceTree = "<group>"; };
 		9731733E28B22B430068561D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -111,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9719A57828B658DE000FBB9D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				9719A57928B658EC000FBB9D /* DetailViewController.swift */,
+				9719A57B28B658F2000FBB9D /* DetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		9731733928B227890068561D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +186,6 @@
 		97D3D56828B0C94700BECC8B /* Sesac_Diary */ = {
 			isa = PBXGroup;
 			children = (
-				97A1927E28B319CA0053E452 /* Realm */,
 				97D3D56B28B0C94700BECC8B /* SceneDelegate.swift */,
 				97D3D56928B0C94700BECC8B /* AppDelegate.swift */,
 				97D3D56F28B0C94700BECC8B /* Main.storyboard */,
@@ -184,6 +196,7 @@
 				97E9BCC028B1EF0600DEC5C0 /* Manager */,
 				97D3D57D28B0C9B000BECC8B /* Utility */,
 				97D3D58628B0E00800BECC8B /* Model */,
+				97A1927E28B319CA0053E452 /* Realm */,
 				97D3D5A028B13D3C00BECC8B /* Extension */,
 				97E9BCCF28B1F02300DEC5C0 /* APIKey */,
 				97E9BCD228B1F32700DEC5C0 /* EndPoint */,
@@ -207,6 +220,7 @@
 		97D3D58228B0DF7200BECC8B /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				9719A57828B658DE000FBB9D /* Detail */,
 				97BA743128B625E9008458DF /* Backup */,
 				97D3D58A28B0E41100BECC8B /* ImageSelect */,
 				97D3D58928B0E3E200BECC8B /* Write */,
@@ -380,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9719A57A28B658EC000FBB9D /* DetailViewController.swift in Sources */,
 				97D3D56E28B0C94700BECC8B /* StartViewController.swift in Sources */,
 				97D3D57F28B0C9FC00BECC8B /* BaseViewController.swift in Sources */,
 				9731734328B239100068561D /* UICollectionViewCell+Extension.swift in Sources */,
@@ -398,6 +413,7 @@
 				97BA743328B625FF008458DF /* BackupViewController.swift in Sources */,
 				97BA742728B5A5AB008458DF /* Transition+Extension.swift in Sources */,
 				9731733D28B2281F0068561D /* ImageSelectViewController+Extension.swift in Sources */,
+				9719A57C28B658F2000FBB9D /* DetailView.swift in Sources */,
 				97D3D56C28B0C94700BECC8B /* SceneDelegate.swift in Sources */,
 				97D3D58C28B0E43500BECC8B /* WriteViewController.swift in Sources */,
 				9731733F28B22B430068561D /* BaseCollectionViewCell.swift in Sources */,
