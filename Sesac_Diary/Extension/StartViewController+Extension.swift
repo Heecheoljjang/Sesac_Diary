@@ -12,29 +12,12 @@ import SwiftUI
 extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return diaryList.count
         return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StartTableViewCell.identifier) as? StartTableViewCell else { return UITableViewCell() }
-        
-//        cell.titleLabel.text = diaryList[indexPath.row].title
-//        if diaryList[indexPath.row].image != nil {
-//            cell.mainImageView.image = diaryList[indexPath.row].image!
-//        } else {
-//            cell.mainImageView.backgroundColor = .systemGray4
-//        }
-        //String에서 다시 이미지로
-        
-//        let imageData = tasks[indexPath.row].imageString
-//
-//        if imageData != nil {
-//            cell.mainImageView.image = UIImage(data: Data(base64Encoded: imageData!, options: .ignoreUnknownCharacters)!)
-//        } else {
-//            cell.mainImageView.image = nil
-//        }
-        
+    
         //도큐먼트에서 가져오기
         cell.mainImageView.image = loadImageFromDocument(fileName: "\(tasks[indexPath.row].objectID).jpg")
         

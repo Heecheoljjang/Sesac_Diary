@@ -32,10 +32,7 @@ class StartViewController: BaseViewController {
         setUpTableView()
         
         setUpButton()
-        
-        //object안에는 테이블이름.self
-        //ascending은 오름내림차순(Bool), 기준이 key
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +88,6 @@ class StartViewController: BaseViewController {
             
         }
         transition(vc, transitionSytle: .push)
-        //self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
