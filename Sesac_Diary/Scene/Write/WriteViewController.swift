@@ -11,6 +11,11 @@ import UIKit
 import RealmSwift
 import PhotosUI
 
+//프로토콜로 데이터 전달
+protocol SelectImageDelegate {
+    func sendImageDate(image: UIImage)
+}
+
 class WriteViewController: BaseViewController {
 
     var mainView = WriteView()
@@ -52,36 +57,62 @@ class WriteViewController: BaseViewController {
     @objc func doneWriting() {
         //데이터 전달
         //데이터 다 있는지
-        if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
-            if mainView.bodyTextView.text != "내용을 입력해주세요" {
-                
-                //이미지 스트링으로
-                let data = mainView.mainImageView.image?.jpegData(compressionQuality: 0.1)?.base64EncodedString(options: .endLineWithLineFeed)
-                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: data)
-                
-                try! localRealm.write {
-                    localRealm.add(task)
-                    print(localRealm.configuration.fileURL!)
-                }
-                
-                //pop
-                navigationController?.popViewController(animated: true)
-            } else {
-
-                //이미지 스트링으로
-                let data = mainView.mainImageView.image?.jpegData(compressionQuality: 0.1)?.base64EncodedString(options: .endLineWithLineFeed)
-                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: data)
-                
-                try! localRealm.write {
-                    localRealm.add(task)
-                }
-                //pop
-                navigationController?.popViewController(animated: true)
-            }
-        } else {
+//        if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
+//            if mainView.bodyTextView.text != "내용을 입력해주세요" {
+//
+//                //이미지 스트링으로
+//                let data = mainView.mainImageView.image?.jpegData(compressionQuality: 0.1)?.base64EncodedString(options: .endLineWithLineFeed)
+//                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: data)
+//
+//                try! localRealm.write {
+//                    localRealm.add(task)
+//                    print(localRealm.configuration.fileURL!)
+//                }
+//
+//                //pop
+//                transition(self, transitionSytle: .pop)
+//                //navigationController?.popViewController(animated: true)
+//            } else {
+//
+//                //이미지 스트링으로
+//                let data = mainView.mainImageView.image?.jpegData(compressionQuality: 0.1)?.base64EncodedString(options: .endLineWithLineFeed)
+//                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: data)
+//
+//                try! localRealm.write {
+//                    localRealm.add(task)
+//                }
+//                //pop
+//                transition(self, transitionSytle: .pop)
+//                //navigationController?.popViewController(animated: true)
+//            }
+//        } else {
+//            showAlert()
+//        }
+        
+        guard let title = mainView.titleTextField.text else {
             showAlert()
+            return
         }
+        
+        let task = UserDiary(diaryTitle: title, diaryContent: mainView.bodyTextView.text, diaryDate: mainView.dateTextField.text!, registerDate: Date(), imageString: nil)
+        
+        do {
+            try localRealm.write {
+                localRealm.add(task)
+                print(localRealm.configuration.fileURL!)
+            }
+        } catch let error {
+            print(error)
+        }
+        
+        //도큐먼트에 이미지 저장
+        if let image = mainView.mainImageView.image {
+            saveImageToDocument(fileName: "\(task.objectID).jpg", image: image)
+        }
+        transition(self, transitionSytle: .pop)
     }
+    
+    
   
     @objc func selectImage() {
 
@@ -97,7 +128,8 @@ class WriteViewController: BaseViewController {
             
             picker.allowsEditing = true
             
-            self.present(picker, animated: true)
+            self.transition(picker, transitionSytle: .present)
+            //self.present(picker, animated: true)
         }
         let openAlbum = UIAlertAction(title: "갤러리", style: .default) { _ in
             var configuration = PHPickerConfiguration()
@@ -107,7 +139,8 @@ class WriteViewController: BaseViewController {
             let picker = PHPickerViewController(configuration: configuration)
             picker.delegate = self
             
-            self.present(picker, animated: true)
+            self.transition(picker, transitionSytle: .present)
+            //self.present(picker, animated: true)
         }
         
         let selectImage = UIAlertAction(title: "이미지 찾기", style: .default) { _ in
@@ -115,7 +148,9 @@ class WriteViewController: BaseViewController {
             vc.imageHandler = { image in
                 self.mainView.mainImageView.image = image
             }
-            self.navigationController?.pushViewController(vc, animated: true)
+            vc.delegate = self
+            self.transition(vc, transitionSytle: .push)
+            //self.navigationController?.pushViewController(vc, animated: true)
         }
         
         let cancel = UIAlertAction(title: "취소", style: .cancel)
@@ -124,7 +159,8 @@ class WriteViewController: BaseViewController {
         actionSheet.addAction(selectImage)
         actionSheet.addAction(cancel)
         
-        present(actionSheet, animated: true)
+        transition(actionSheet, transitionSytle: .present)
+        //present(actionSheet, animated: true)
     }
     
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -220,7 +256,17 @@ extension WriteViewController: PHPickerViewControllerDelegate, UIImagePickerCont
         
         if let image = info[.originalImage] as? UIImage {
             mainView.mainImageView.image = image
-            dismiss(animated: true)
+            //dismiss(animated: true)
+            transition(self, transitionSytle: .dismiss)
         }
+    }
+}
+
+
+extension WriteViewController: SelectImageDelegate {
+    
+    //언제 실행이 되면 되나 -> 
+    func sendImageDate(image: UIImage) {
+        mainView.mainImageView.image = image
     }
 }

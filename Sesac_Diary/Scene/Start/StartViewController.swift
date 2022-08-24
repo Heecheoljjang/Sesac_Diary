@@ -90,7 +90,10 @@ class StartViewController: BaseViewController {
             self.diaryList.append(diary)
             
         }
-        self.navigationController?.pushViewController(vc, animated: true)
+        transition(vc, transitionSytle: .push)
+        //self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
 }
 

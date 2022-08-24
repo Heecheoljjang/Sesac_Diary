@@ -21,6 +21,10 @@ class ImageSelectViewController: BaseViewController {
     
     var imageHandler: ((UIImage) -> ())?
     
+    var delegate: SelectImageDelegate?
+    
+    var selectIndexPath: IndexPath?
+    
     override func loadView() {
         self.view = mainView
     }
@@ -73,10 +77,13 @@ class ImageSelectViewController: BaseViewController {
         
         //데이터 전달
         if let image = selectedImage {
-            imageHandler?(image)
+//            imageHandler?(image)
+            delegate?.sendImageDate(image: image)
         }
+        
         //화면 내리기
-        navigationController?.popViewController(animated: true)
+        transition(self, transitionSytle: .pop)
+        //navigationController?.popViewController(animated: true)
     }
 }
 

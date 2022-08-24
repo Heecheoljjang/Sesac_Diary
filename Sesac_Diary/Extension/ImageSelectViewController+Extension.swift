@@ -22,6 +22,10 @@ extension ImageSelectViewController: UICollectionViewDelegate, UICollectionViewD
         let url = URL(string: imageList[indexPath.item].regular)
 
         cell.imageView.kf.setImage(with: url)
+        
+        //보더
+        cell.layer.borderColor = selectIndexPath == indexPath ? UIColor.white.cgColor : nil
+        cell.layer.borderWidth = selectIndexPath == indexPath ? 4 : 0
 
         return cell
     }
@@ -29,7 +33,20 @@ extension ImageSelectViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell else { return }
         selectedImage = cell.imageView.image
+        
+        //보더
+        selectIndexPath = indexPath
+        collectionView.reloadData()
     }
+    
+    //언제 실행되는지 찾아보기
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//
+//        print("deselect", indexPath)
+//        selectIndexPath = nil
+//        selectedImage = nil
+//        collectionView.reloadData()
+//    }
     
 }
 

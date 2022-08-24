@@ -25,15 +25,19 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
 //        } else {
 //            cell.mainImageView.backgroundColor = .systemGray4
 //        }
-        //이미지 다시 이미지로
+        //String에서 다시 이미지로
         
-        let imageData = tasks[indexPath.row].imageString
+//        let imageData = tasks[indexPath.row].imageString
+//
+//        if imageData != nil {
+//            cell.mainImageView.image = UIImage(data: Data(base64Encoded: imageData!, options: .ignoreUnknownCharacters)!)
+//        } else {
+//            cell.mainImageView.image = nil
+//        }
         
-        if imageData != nil {
-            cell.mainImageView.image = UIImage(data: Data(base64Encoded: imageData!, options: .ignoreUnknownCharacters)!)
-        } else {
-            cell.mainImageView.image = nil
-        }
+        //도큐먼트에서 가져오기
+        cell.mainImageView.image = loadImageFromDocument(fileName: "\(tasks[indexPath.row].objectID).jpg")
+        
         cell.titleLabel.text = tasks[indexPath.row].diaryTitle
         cell.dateLabel.text = tasks[indexPath.row].diaryDate
         
@@ -76,12 +80,16 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        //도큐먼트에 저장한 이미지까지 잘 지워줘야함
+        
         let delete = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
             
             try! self.localRealm.write {
                 self.localRealm.delete(self.tasks[indexPath.row])
             }
             self.fetchRealm()
+            
+            self.removeImageFromDocument(fileName: "\(self.tasks[indexPath.row].objectID).jpg")
         }
         delete.image = UIImage(systemName: "trash")
         return UISwipeActionsConfiguration(actions: [delete])

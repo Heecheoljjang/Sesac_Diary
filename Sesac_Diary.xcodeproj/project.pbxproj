@@ -19,6 +19,8 @@
 		97A1927B28B3163C0053E452 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 97A1927A28B3163C0053E452 /* Realm */; };
 		97A1927D28B3163C0053E452 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 97A1927C28B3163C0053E452 /* RealmSwift */; };
 		97A1928028B319E60053E452 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A1927F28B319E60053E452 /* RealmModel.swift */; };
+		97BA742728B5A5AB008458DF /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA742628B5A5AB008458DF /* Transition+Extension.swift */; };
+		97BA742928B5D262008458DF /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA742828B5D262008458DF /* FileManager+Extension.swift */; };
 		97D3D56A28B0C94700BECC8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56928B0C94700BECC8B /* AppDelegate.swift */; };
 		97D3D56C28B0C94700BECC8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56B28B0C94700BECC8B /* SceneDelegate.swift */; };
 		97D3D56E28B0C94700BECC8B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3D56D28B0C94700BECC8B /* StartViewController.swift */; };
@@ -56,6 +58,8 @@
 		9731734D28B299600068561D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		9731734F28B29A1E0068561D /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		97A1927F28B319E60053E452 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		97BA742628B5A5AB008458DF /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
+		97BA742828B5D262008458DF /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		97D3D56628B0C94700BECC8B /* Sesac_Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sesac_Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D3D56928B0C94700BECC8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D3D56B28B0C94700BECC8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 				9731734228B239100068561D /* UICollectionViewCell+Extension.swift */,
 				9731734828B299000068561D /* StartViewController+Extension.swift */,
 				9731734D28B299600068561D /* UITableViewCell+Extension.swift */,
+				97BA742628B5A5AB008458DF /* Transition+Extension.swift */,
+				97BA742828B5D262008458DF /* FileManager+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				9731734328B239100068561D /* UICollectionViewCell+Extension.swift in Sources */,
 				9731735028B29A1E0068561D /* BaseTableViewCell.swift in Sources */,
 				97D3D58E28B0E43C00BECC8B /* WriteView.swift in Sources */,
+				97BA742928B5D262008458DF /* FileManager+Extension.swift in Sources */,
 				97D3D58128B0CA0500BECC8B /* BaseView.swift in Sources */,
 				9731734C28B299470068561D /* StartTableViewCell.swift in Sources */,
 				97D3D58528B0DF8B00BECC8B /* StartView.swift in Sources */,
@@ -358,6 +365,7 @@
 				9731733B28B227E20068561D /* ImageCollectionViewCell.swift in Sources */,
 				97D3D56A28B0C94700BECC8B /* AppDelegate.swift in Sources */,
 				97A1928028B319E60053E452 /* RealmModel.swift in Sources */,
+				97BA742728B5A5AB008458DF /* Transition+Extension.swift in Sources */,
 				9731733D28B2281F0068561D /* ImageSelectViewController+Extension.swift in Sources */,
 				97D3D56C28B0C94700BECC8B /* SceneDelegate.swift in Sources */,
 				97D3D58C28B0E43500BECC8B /* WriteViewController.swift in Sources */,
