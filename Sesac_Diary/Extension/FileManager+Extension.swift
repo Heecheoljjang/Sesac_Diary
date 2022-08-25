@@ -9,6 +9,12 @@ import UIKit
 
 extension UIViewController {
     
+    func documentDirectoryPath() -> URL? {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil } //document 경로까지 가져오는것
+        
+        return documentDirectory
+    }
+    
     func loadImageFromDocument(fileName: String) -> UIImage? {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil } //document 경로까지 가져오는것
         let fileURL = documentDirectory.appendingPathComponent(fileName) //세부경로
@@ -41,5 +47,30 @@ extension UIViewController {
         } catch let error {
             print("저장 실패", error)
         }
+    }
+    
+    func fetchDocumentZipFile() {
+        //zip파일 가져오기
+        do {
+            guard let path = documentDirectoryPath() else { return }
+            
+            //including~~에선 추가적인 정보를 얻을 수 이씅ㅁ.
+            let docs = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
+            print("docs: \(docs)")
+            
+            //docs중 zip파일만 필터링
+            let zip = docs.filter {
+                $0.pathExtension == "zip" //pathExtension은 확장자를 의미. 스트링의 contain으로도 가능
+            }
+            print("zip: \(zip)")
+            
+            //지금 출력하면 전체 경로가 출력돼ㅑ서 지저분
+            let result = zip.map { $0.lastPathComponent }
+            print("result: \(result)")
+            
+        } catch {
+            print("error")
+        }
+        
     }
 }

@@ -20,6 +20,7 @@
 		9731734C28B299470068561D /* StartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734B28B299470068561D /* StartTableViewCell.swift */; };
 		9731734E28B299600068561D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734D28B299600068561D /* UITableViewCell+Extension.swift */; };
 		9731735028B29A1E0068561D /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731734F28B29A1E0068561D /* BaseTableViewCell.swift */; };
+		977A3FA028B7016300B0E342 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 977A3F9F28B7016300B0E342 /* Zip */; };
 		97A1927B28B3163C0053E452 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 97A1927A28B3163C0053E452 /* Realm */; };
 		97A1927D28B3163C0053E452 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 97A1927C28B3163C0053E452 /* RealmSwift */; };
 		97A1928028B319E60053E452 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A1927F28B319E60053E452 /* RealmModel.swift */; };
@@ -108,6 +109,7 @@
 				97E9BCC528B1EF2B00DEC5C0 /* Kingfisher in Frameworks */,
 				97E9BCCB28B1EF3F00DEC5C0 /* SwiftyJSON in Frameworks */,
 				97D3D59728B0F99100BECC8B /* SnapKit in Frameworks */,
+				977A3FA028B7016300B0E342 /* Zip in Frameworks */,
 				9731734628B24A240068561D /* JGProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +331,7 @@
 				9731734528B24A240068561D /* JGProgressHUD */,
 				97A1927A28B3163C0053E452 /* Realm */,
 				97A1927C28B3163C0053E452 /* RealmSwift */,
+				977A3F9F28B7016300B0E342 /* Zip */,
 			);
 			productName = Sesac_Diary;
 			productReference = 97D3D56628B0C94700BECC8B /* Sesac_Diary.app */;
@@ -365,6 +368,7 @@
 				97E9BCC928B1EF3F00DEC5C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				9731734428B24A240068561D /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				97A1927928B3163C0053E452 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				977A3F9E28B7016300B0E342 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 97D3D56728B0C94700BECC8B /* Products */;
 			projectDirPath = "";
@@ -655,6 +659,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		977A3F9E28B7016300B0E342 /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		97A1927928B3163C0053E452 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -702,6 +714,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9731734428B24A240068561D /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
 			productName = JGProgressHUD;
+		};
+		977A3F9F28B7016300B0E342 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 977A3F9E28B7016300B0E342 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 		97A1927A28B3163C0053E452 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

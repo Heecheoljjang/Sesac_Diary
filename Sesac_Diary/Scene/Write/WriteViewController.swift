@@ -96,7 +96,7 @@ class WriteViewController: BaseViewController {
                 transition(self, transitionSytle: .pop)
             }
         } else {
-            showAlert()
+            showAlert(title: "제목과 날짜는 반드시 작성해야합니다!")
         }
     }
 
@@ -247,7 +247,6 @@ extension WriteViewController: PHPickerViewControllerDelegate, UIImagePickerCont
 
 extension WriteViewController: SelectImageDelegate {
     
-    //언제 실행이 되면 되나 -> 
     func sendImageDate(image: UIImage) {
         mainView.mainImageView.image = image
     }
