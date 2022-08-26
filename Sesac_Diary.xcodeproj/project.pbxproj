@@ -227,7 +227,6 @@
 		97D3D58228B0DF7200BECC8B /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				97F803FC28B8636C00236071 /* Calendar */,
 				9719A57828B658DE000FBB9D /* Detail */,
 				97BA743128B625E9008458DF /* Backup */,
 				97D3D58A28B0E41100BECC8B /* ImageSelect */,
@@ -311,13 +310,6 @@
 				97E9BCD328B1F33900DEC5C0 /* EndPoint.swift */,
 			);
 			path = EndPoint;
-			sourceTree = "<group>";
-		};
-		97F803FC28B8636C00236071 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

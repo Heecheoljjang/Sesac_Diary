@@ -60,38 +60,42 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         let delete = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
             
             self.repository.deleteItem(item: self.tasks[indexPath.row])
+            print("삭제 완료")
+            self.mainView.tableView.reloadData()
+            print("리로드완료")
         }
         delete.image = UIImage(systemName: "trash")
+
         return UISwipeActionsConfiguration(actions: [delete])
     }
 }
 
 extension StartViewController: FSCalendarDelegate, FSCalendarDataSource {
     
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return repository.fetchDate(date: date).count
-    }
-    
-//    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
-//        return "바보"
+//    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+//        return repository.fetchDate(date: date).count
 //    }
-    
-    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        return nil
-    }
-    
-//    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-//        <#code#>
+//
+////    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+////        return "바보"
+////    }
+//
+//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+//        return nil
 //    }
-
-    //date형식이 불편하게 되어있음. 시 분초까지 다 맞아야 문제없게됨 => dateFormatter를 통해서 변경 필요
-    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-        return formatter.string(from: date) == "220907" ? "오프라인 모임" : nil
-    }
-
-    //렘 데이터 날짜에 따라 몇개의 글이 있는지
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        tasks = repository.fetchDate(date: date)
-    }
+//
+////    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+////        <#code#>
+////    }
+//
+//    //date형식이 불편하게 되어있음. 시 분초까지 다 맞아야 문제없게됨 => dateFormatter를 통해서 변경 필요
+//    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+//        return formatter.string(from: date) == "220907" ? "오프라인 모임" : nil
+//    }
+//
+//    //렘 데이터 날짜에 따라 몇개의 글이 있는지
+//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//
+//        tasks = repository.fetchDate(date: date)
+//    }
 }

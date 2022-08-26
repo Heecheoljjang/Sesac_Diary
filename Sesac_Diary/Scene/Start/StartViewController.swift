@@ -26,7 +26,9 @@ class StartViewController: BaseViewController {
     
     var tasks: Results<UserDiary>! {
         didSet {
+            print("123")
             mainView.tableView.reloadData()
+            print("리로드")
         }
     }
     
@@ -48,7 +50,7 @@ class StartViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         fetchRealm()
-        mainView.calendar.reloadData()
+        //mainView.calendar.reloadData()
     }
     
     func setUpButton() {

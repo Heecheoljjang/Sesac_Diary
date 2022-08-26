@@ -51,10 +51,10 @@ class UserDiaryRepository {
     }
     
     func deleteItem(item: UserDiary) {
+        removeImageFromDocument(fileName: "\(item.objectID).jpg")
         try! localRealm.write {
             localRealm.delete(item)
         }
-        removeImageFromDocument(fileName: "\(item.objectID).jpg")
     }
     
     func removeImageFromDocument(fileName: String) {
@@ -67,4 +67,5 @@ class UserDiaryRepository {
             print(error)
         }
     }
+
 }

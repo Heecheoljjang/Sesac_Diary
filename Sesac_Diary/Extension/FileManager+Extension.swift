@@ -40,10 +40,10 @@ extension UIViewController {
         }
     }
     
-    func fetchDocumentZipFile() {
+    func fetchDocumentZipFile() -> [String] {
         //zip파일 가져오기
         do {
-            guard let path = documentDirectoryPath() else { return }
+            guard let path = documentDirectoryPath() else { return [] }
             
             //including~~에선 추가적인 정보를 얻을 수 이씅ㅁ.
             let docs = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
@@ -59,9 +59,11 @@ extension UIViewController {
             let result = zip.map { $0.lastPathComponent }
             print("result: \(result)")
             
+            return result
+            
         } catch {
             print("error")
         }
-        
+        return []
     }
 }
