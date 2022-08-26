@@ -72,11 +72,6 @@ class BackupViewController: BaseViewController {
         } catch {
             showAlert(title: "압축 실패")
         }
-        
-        //압축하고 Activity뷰컨을 띄움(실패해도 뜰 수 있기떄ㅜㅁㄴ에 성공했을경우에만 ㅅ띄우도록함)
-        showActivityViewControl1er()
-        
-        
     }
     
     @objc func restoreButtonClicked() {
@@ -138,7 +133,8 @@ extension BackupViewController: UIDocumentPickerDelegate {
                     print("progress: \(progress)")
                 }, fileOutputHandler: { unzippedFile in
                     print("unzippedFile: \(unzippedFile)")
-                    self.showAlert(title: "복구 완료")
+                    self.showAlert(title: "앱을 다시 실행해주세요!")
+                    
                 })
             } catch {
                 showAlert(title: "압축 해제 실패")
@@ -157,7 +153,7 @@ extension BackupViewController: UIDocumentPickerDelegate {
                     print("progress: \(progress)")
                 }, fileOutputHandler: { unzippedFile in
                     print("unzippedFile: \(unzippedFile)")
-                    self.showAlert(title: "복구 완료")
+                    self.showAlert(title: "앱을 다시 실행해주세요!")
                 })
             } catch {
                 showAlert(title: "압축 해제 실패")

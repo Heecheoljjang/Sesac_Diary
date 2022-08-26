@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 import UIKit
 
+//테이블에 대한 스키마
 //테이블 이름
 //@persisted: 컬럼
 class UserDiary: Object {

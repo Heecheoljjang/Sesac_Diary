@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import FSCalendar
 
 class StartViewController: BaseViewController {
 
@@ -14,7 +15,14 @@ class StartViewController: BaseViewController {
     
     var diaryList: [Diary] = []
     
-    let localRealm = try! Realm() //가져오기 2번쨰
+    //let localRealm = try! Realm() //가져오기 2번쨰
+    let repository = UserDiaryRepository()
+    
+    let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyMMdd"
+        return formatter
+    }()
     
     var tasks: Results<UserDiary>! {
         didSet {
@@ -33,21 +41,23 @@ class StartViewController: BaseViewController {
         
         setUpButton()
 
+        setUpCalendar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchRealm()
+        mainView.calendar.reloadData()
     }
     
     func setUpButton() {
         let menus: [UIAction] = [
             UIAction(title: "제목순", image: nil, identifier: nil, discoverabilityTitle: nil, handler: { action in
-                self.tasks = self.localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
+                self.tasks = self.repository.fetchSort("diaryTitle")
                 self.mainView.tableView.reloadData()
             }), UIAction(title: "날짜순", image: nil, identifier: nil, discoverabilityTitle: nil, handler: { action in
-                self.tasks = self.localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryDate", ascending: false)
+                self.tasks = self.repository.fetchSort("diaryDate")
                 self.mainView.tableView.reloadData()
             })
         ]
@@ -66,7 +76,8 @@ class StartViewController: BaseViewController {
     
     func fetchRealm() {
         //3. 정렬 후 tasks에 담기 -> 그대로 사용하는건 위험할 수도 있음.
-        tasks = localRealm.objects(UserDiary.self)
+        //tasks = localRealm.objects(UserDiary.self)
+        tasks = repository.fetch() //레포지토리 사용
     }
     
     override func setUpNavigationController() {
@@ -82,6 +93,11 @@ class StartViewController: BaseViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
 
+    }
+    
+    func setUpCalendar() {
+        mainView.calendar.delegate = self
+        mainView.calendar.dataSource = self
     }
 
     @objc func startWriting() {

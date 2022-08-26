@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import PhotosUI
 
-class WriteView: BaseView {
+final class WriteView: BaseView {
     
     let mainImageView: UIImageView = {
         let view = UIImageView()

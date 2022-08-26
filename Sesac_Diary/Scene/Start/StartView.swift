@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import FSCalendar
 
 class StartView: BaseView {
 
@@ -26,7 +27,12 @@ class StartView: BaseView {
         return view
     }()
     
-    
+    lazy var calendar: FSCalendar = {
+        let view = FSCalendar()
+
+        view.backgroundColor = .white
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,7 +47,7 @@ class StartView: BaseView {
     
     override func configure() {
         
-        [lineView, tableView].forEach {
+        [lineView, tableView, calendar].forEach {
             self.addSubview($0)
         }
         backgroundColor = .lightGray
@@ -54,8 +60,14 @@ class StartView: BaseView {
             make.trailing.leading.equalTo(self)
         }
         
-        tableView.snp.makeConstraints { make in
+        calendar.snp.makeConstraints { make in
             make.top.equalTo(lineView.snp.bottom)
+            make.leading.trailing.equalTo(self)
+            make.height.equalTo(300)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(calendar.snp.bottom)
             make.leading.trailing.equalTo(self)
             make.bottom.equalTo(self.safeAreaLayoutGuide)
         }
