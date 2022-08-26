@@ -44,13 +44,16 @@ class StartViewController: BaseViewController {
         setUpButton()
 
         setUpCalendar()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchRealm()
-
+        //fetchRealm()
+        tasks = repository.fetchDate(date: Date())
+        mainView.calendar.reloadData()
+        mainView.tableView.reloadData()
     }
     
     func setUpButton() {

@@ -65,7 +65,7 @@ class WriteViewController: BaseViewController {
                 let date = stringToDate(mainView.dateTextField.text!)
 
                 let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: date)
-                
+                print(date)
                 self.repository.addItem(item: task)
                 
                 //도큐먼트에 이미지 저장
@@ -81,6 +81,7 @@ class WriteViewController: BaseViewController {
                 let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: date)
                 
                 self.repository.addItem(item: task)
+                print(date)
                 
                 //도큐먼트에 이미지 저장
                 if let image = mainView.mainImageView.image {

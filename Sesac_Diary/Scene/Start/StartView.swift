@@ -29,7 +29,7 @@ class StartView: BaseView {
     
     lazy var calendar: FSCalendar = {
         let view = FSCalendar()
-
+        //view.locale = Locale(identifier: "ko-Kr")
         view.backgroundColor = .white
         return view
     }()

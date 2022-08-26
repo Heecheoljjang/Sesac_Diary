@@ -60,6 +60,7 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
             
             self.repository.deleteItem(item: self.tasks[indexPath.row])
             self.mainView.tableView.reloadData()
+            self.mainView.calendar.reloadData()
         }
         delete.image = UIImage(systemName: "trash")
 
