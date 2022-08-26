@@ -13,11 +13,7 @@ class BackupViewController: BaseViewController {
     
     var mainView = BackupView()
     
-    var backupArray: [String] = [] {
-        didSet {
-            mainView.backupTableView.reloadData()
-        }
-    }
+    var backupArray: [String] = []
     
     override func loadView() {
         self.view = mainView
@@ -38,7 +34,7 @@ class BackupViewController: BaseViewController {
         //fetchDocumentZipFile()
         
         //테이블뷰에 백업 목록 파일 불러와야함.
-        backupArray = fetchDocumentZipFile()
+        backupArray = fetchDocumentZipFile().map { "\($0.split(separator: ".")[0])" }
 
     }
     
@@ -86,6 +82,7 @@ class BackupViewController: BaseViewController {
         } catch {
             showAlert(title: "압축 실패")
         }
+        mainView.backupTableView.reloadData()
     }
     
     @objc func restoreButtonClicked() {

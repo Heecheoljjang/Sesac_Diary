@@ -56,13 +56,10 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         //도큐먼트에 저장한 이미지까지 잘 지워줘야함
-        
         let delete = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
             
             self.repository.deleteItem(item: self.tasks[indexPath.row])
-            print("삭제 완료")
             self.mainView.tableView.reloadData()
-            print("리로드완료")
         }
         delete.image = UIImage(systemName: "trash")
 
