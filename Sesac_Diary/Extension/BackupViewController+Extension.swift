@@ -31,16 +31,8 @@ extension BackupViewController: UITableViewDataSource, UITableViewDelegate {
         //백업 파일 지우기
         let delete = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
             
-            guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+            self.removeFile(self.backupArray[indexPath.row])
             
-            let fileURL = documentDirectory.appendingPathComponent(self.backupArray[indexPath.row] + ".zip")
-            
-            do {
-                try FileManager.default.removeItem(at: fileURL)
-                print("완료")
-            } catch let error {
-                print(error)
-            }
             self.backupArray = self.fetchDocumentZipFile().map { "\($0.split(separator: ".")[0])" }
             
             self.mainView.backupTableView.reloadData()

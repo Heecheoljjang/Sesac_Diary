@@ -66,4 +66,17 @@ extension UIViewController {
         }
         return []
     }
+    
+    func removeFile(_ item: String) {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        let fileURL = documentDirectory.appendingPathComponent(item + ".zip")
+        
+        do {
+            try FileManager.default.removeItem(at: fileURL)
+            print("완료")
+        } catch let error {
+            print(error)
+        }
+    }
 }
