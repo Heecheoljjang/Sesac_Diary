@@ -23,15 +23,15 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.mainImageView.image = loadImageFromDocument(fileName: "\(tasks[indexPath.row].objectID).jpg")
         
         cell.titleLabel.text = tasks[indexPath.row].diaryTitle
-        cell.dateLabel.text = tasks[indexPath.row].diaryDate
-        
+        cell.dateLabel.text = dateToString(tasks[indexPath.row].diaryDate)
+    
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
         
-        vc.diary = Diary(image: "\(tasks[indexPath.row].objectID).jpg", title: tasks[indexPath.row].diaryTitle, date: tasks[indexPath.row].diaryDate, body: tasks[indexPath.row].diaryContent ?? "")
+        vc.diary = Diary(image: "\(tasks[indexPath.row].objectID).jpg", title: tasks[indexPath.row].diaryTitle, date: dateToString(tasks[indexPath.row].diaryDate), body: tasks[indexPath.row].diaryContent ?? "")
         
         transition(vc, transitionSytle: .push)
     }
@@ -69,30 +69,35 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension StartViewController: FSCalendarDelegate, FSCalendarDataSource {
     
-//    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-//        return repository.fetchDate(date: date).count
-//    }
-//
-////    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
-////        return "바보"
-////    }
-//
-//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+    //무조건 점 하나
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if repository.fetchDate(date: date).count != 0 {
+            return 1
+        } else {
+            return 0
+        }
+    }
+
+//    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
 //        return nil
 //    }
-//
-////    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-////        <#code#>
-////    }
-//
-//    //date형식이 불편하게 되어있음. 시 분초까지 다 맞아야 문제없게됨 => dateFormatter를 통해서 변경 필요
-//    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-//        return formatter.string(from: date) == "220907" ? "오프라인 모임" : nil
+
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        return nil
+    }
+
+//    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+//        <#code#>
 //    }
-//
-//    //렘 데이터 날짜에 따라 몇개의 글이 있는지
-//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//
-//        tasks = repository.fetchDate(date: date)
-//    }
+
+    //date형식이 불편하게 되어있음. 시 분초까지 다 맞아야 문제없게됨 => dateFormatter를 통해서 변경 필요
+    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        return nil
+    }
+
+    //렘 데이터 날짜에 따라 몇개의 글이 있는지
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+
+        tasks = repository.fetchDate(date: date)
+    }
 }

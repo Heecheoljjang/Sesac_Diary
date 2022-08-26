@@ -55,6 +55,7 @@
 		97E9BCD428B1F33900DEC5C0 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E9BCD328B1F33900DEC5C0 /* EndPoint.swift */; };
 		97F803F828B8558D00236071 /* UserDiaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F803F728B8558D00236071 /* UserDiaryRepository.swift */; };
 		97F803FB28B8615900236071 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 97F803FA28B8615900236071 /* FSCalendar */; };
+		97F803FE28B91E1B00236071 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F803FD28B91E1B00236071 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		97E9BCD028B1F02F00DEC5C0 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		97E9BCD328B1F33900DEC5C0 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		97F803F728B8558D00236071 /* UserDiaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiaryRepository.swift; sourceTree = "<group>"; };
+		97F803FD28B91E1B00236071 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 				97BA742628B5A5AB008458DF /* Transition+Extension.swift */,
 				97BA742828B5D262008458DF /* FileManager+Extension.swift */,
 				9719A57628B6402F000FBB9D /* BackupViewController+Extension.swift */,
+				97F803FD28B91E1B00236071 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97F803FE28B91E1B00236071 /* UIViewController+Extension.swift in Sources */,
 				9719A57A28B658EC000FBB9D /* DetailViewController.swift in Sources */,
 				97D3D56E28B0C94700BECC8B /* StartViewController.swift in Sources */,
 				97D3D57F28B0C9FC00BECC8B /* BaseViewController.swift in Sources */,

@@ -60,8 +60,11 @@ class WriteViewController: BaseViewController {
         //데이터 다 있는지
         if mainView.titleTextField.text != "" && mainView.dateTextField.text != "" {
             if mainView.bodyTextView.text != "내용을 입력해주세요" {
+                
+                //텍스트필드의 문자열을 날짜로 변경
+                let date = stringToDate(mainView.dateTextField.text!)
 
-                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: mainView.dateTextField.text!, registerDate: Date())
+                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: date)
                 
                 self.repository.addItem(item: task)
                 
@@ -72,7 +75,10 @@ class WriteViewController: BaseViewController {
                 transition(self, transitionSytle: .pop)
             } else {
 
-                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: mainView.dateTextField.text!, registerDate: Date())
+                //날짜 구하기
+                let date = stringToDate(mainView.dateTextField.text!)
+                
+                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: date)
                 
                 self.repository.addItem(item: task)
                 

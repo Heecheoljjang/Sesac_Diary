@@ -50,7 +50,7 @@ class StartViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         fetchRealm()
-        //mainView.calendar.reloadData()
+
     }
     
     func setUpButton() {

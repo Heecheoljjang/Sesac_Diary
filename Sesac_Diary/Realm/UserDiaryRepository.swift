@@ -26,7 +26,7 @@ class UserDiaryRepository {
         
 //        return localRealm.objects(UserDiary.self).filter("diaryDate >= %@ AND diaryDate < %@", date, Date(timeInterval: 86400, since: date)) //%@는 NSPredicate로 매개변수로 생각
         //날짜를 고르면 00:00:00로 출력이되기때문에 그냥 date부터 86400더하면됨.
-        return localRealm.objects(UserDiary.self).filter("registerDate >= %@ AND registerDate < %@", date, Date(timeInterval: 86400, since: date)) 
+        return localRealm.objects(UserDiary.self).filter("diaryDate >= %@ AND diaryDate < %@", date, Date(timeInterval: 86400, since: date)) 
     }
     
     func addItem(item: UserDiary) {
