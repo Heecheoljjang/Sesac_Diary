@@ -21,7 +21,8 @@ class WriteViewController: BaseViewController {
     var mainView = WriteView()
     
     //2. realm테이블에 데이터를 CRUD할 때, Realm 테이블 경로에 접근을 하기위한 코드
-    let localRealm = try! Realm() //
+//    let localRealm = try! Realm()
+    let repository = UserDiaryRepository()
     
     var diaryDataHandler: ((Diary) -> ())?
         
@@ -62,14 +63,7 @@ class WriteViewController: BaseViewController {
 
                 let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: mainView.dateTextField.text!, registerDate: Date())
                 
-                do {
-                    try localRealm.write {
-                        localRealm.add(task)
-                        print(localRealm.configuration.fileURL!)
-                    }
-                } catch let error {
-                    print(error)
-                }
+                self.repository.addItem(item: task)
                 
                 //도큐먼트에 이미지 저장
                 if let image = mainView.mainImageView.image {
@@ -80,14 +74,7 @@ class WriteViewController: BaseViewController {
 
                 let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: mainView.dateTextField.text!, registerDate: Date())
                 
-                do {
-                    try localRealm.write {
-                        localRealm.add(task)
-                        print(localRealm.configuration.fileURL!)
-                    }
-                } catch let error {
-                    print(error)
-                }
+                self.repository.addItem(item: task)
                 
                 //도큐먼트에 이미지 저장
                 if let image = mainView.mainImageView.image {

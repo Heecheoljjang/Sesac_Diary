@@ -30,7 +30,14 @@ class UserDiaryRepository {
     }
     
     func addItem(item: UserDiary) {
-        
+        do {
+            try localRealm.write {
+                localRealm.add(item)
+                print(localRealm.configuration.fileURL!)
+            }
+        } catch let error {
+            print(error)
+        }
     }
     
     let localRealm = try! Realm()
