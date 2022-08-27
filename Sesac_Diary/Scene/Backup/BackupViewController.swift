@@ -57,13 +57,13 @@ class BackupViewController: BaseViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss 백업"
         let date = dateFormatter.string(from: Date())
         
-        //도큐먼트 위치에 백업 파일이 있는지 확인
         guard let path = documentDirectoryPath() else {
             showAlert(title: "도큐먼트 위치 오류")
             return
         }
         
         let realmFile = path.appendingPathComponent("default.realm") //도큐먼트 폴더에서 한 번더 어펜딩해서 path 구함
+        let imageDirectory = path.appendingPathComponent("images")
         
         guard FileManager.default.fileExists(atPath: realmFile.path) else { //파일 존재하는지
             showAlert(title: "백업할 파일 없음.")
@@ -71,6 +71,7 @@ class BackupViewController: BaseViewController {
         }
         
         urlPath.append(URL(string: realmFile.path)!) //배열에 추가
+        urlPath.append(URL(string: imageDirectory.path)!)
         
         //백업 파일이 있따면 압축: URL배열
         do {

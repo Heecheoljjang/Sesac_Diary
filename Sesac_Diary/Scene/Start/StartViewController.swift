@@ -44,6 +44,8 @@ class StartViewController: BaseViewController {
         setUpButton()
 
         setUpCalendar()
+        
+        createImageDirectory()
 
     }
     
