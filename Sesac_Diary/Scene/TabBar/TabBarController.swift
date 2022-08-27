@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
         
         setUpViews()
         
-        configure()
+        setUpAppearance()
     }
     
     func setUpViews() {
@@ -31,18 +31,22 @@ class TabBarController: UITabBarController {
         let navStart = UINavigationController(rootViewController: startVC)
         let navBackup = UINavigationController(rootViewController: backupVC)
         let navSearch = UINavigationController(rootViewController: searchVC)
-
-        setViewControllers([navStart, navSearch, navBackup], animated: true)
-        
-        //self.tabBar.selectedItem = tabBar.items?.first!
-    }
-    
-    func configure() {
-
-        tabBar.tintColor = .white
         
         startVC.tabBarItem.image = UIImage(systemName: "book.closed")
         backupVC.tabBarItem.image = UIImage(systemName: "gear")
         searchVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+
+        setViewControllers([navStart, navSearch, navBackup], animated: true)
+    }
+    
+    func setUpAppearance() {
+
+        let appearance = UITabBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .lightGray
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+        tabBar.tintColor = .white
+        
     }
 }
