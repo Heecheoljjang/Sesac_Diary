@@ -43,7 +43,6 @@ class BackupViewController: BaseViewController {
        // navigationItem.leftBarButtonItem = dismissButton
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white ]
-        title = "데이터 백업 및 복구"
     }
     
     @objc func dismissView() {

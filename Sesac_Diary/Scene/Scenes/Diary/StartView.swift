@@ -34,6 +34,12 @@ class StartView: BaseView {
         return view
     }()
     
+    let tabBarLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -47,7 +53,7 @@ class StartView: BaseView {
     
     override func configure() {
         
-        [lineView, tableView, calendar].forEach {
+        [lineView, tableView, calendar, tabBarLineView].forEach {
             self.addSubview($0)
         }
         backgroundColor = .lightGray
@@ -69,7 +75,14 @@ class StartView: BaseView {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(calendar.snp.bottom)
             make.leading.trailing.equalTo(self)
+            make.bottom.equalTo(tabBarLineView.snp.top)
+        }
+        
+        tabBarLineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.top.equalTo(tableView.snp.bottom)
             make.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.trailing.leading.equalTo(self)
         }
     }
 

@@ -54,6 +54,13 @@ class BackupView: BaseView {
         return view
     }()
     
+    let tabBarLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -69,7 +76,7 @@ class BackupView: BaseView {
     
     override func configure() {
         
-        [backupButton, restoreButton, backupTableView, lineView, secondLineView].forEach {
+        [backupButton, restoreButton, backupTableView, lineView, secondLineView, tabBarLineView].forEach {
             self.addSubview($0)
         }
         
@@ -104,13 +111,19 @@ class BackupView: BaseView {
         backupTableView.snp.makeConstraints { make in
             make.top.equalTo(secondLineView.snp.bottom)
             make.leading.trailing.equalTo(self)
-            make.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.bottom.equalTo(tabBarLineView.snp.top)
         }
         
         secondLineView.snp.makeConstraints { make in
             make.top.equalTo(backupButton.snp.bottom).offset(20)
             make.trailing.leading.equalTo(self)
             make.height.equalTo(1)
+        }
+        
+        tabBarLineView.snp.makeConstraints { make in
+            make.trailing.leading.equalTo(self)
+            make.height.equalTo(1)
+            make.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }

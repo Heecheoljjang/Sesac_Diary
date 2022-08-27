@@ -94,7 +94,6 @@ class StartViewController: BaseViewController {
         
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white ]
-        title = "내 다이어리"
     }
     
     func setUpTableView() {
