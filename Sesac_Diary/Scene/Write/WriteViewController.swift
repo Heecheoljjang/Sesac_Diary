@@ -62,10 +62,9 @@ class WriteViewController: BaseViewController {
             if mainView.bodyTextView.text != "내용을 입력해주세요" {
                 
                 //텍스트필드의 문자열을 날짜로 변경
-                let date = stringToDate(mainView.dateTextField.text!)
+//                let date = stringToDate(mainView.dateTextField.text!)
 
-                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: date)
-                print(date)
+                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: mainView.bodyTextView.text, diaryDate: mainView.dateTextField.text!)
                 self.repository.addItem(item: task)
                 
                 //도큐먼트에 이미지 저장
@@ -78,10 +77,9 @@ class WriteViewController: BaseViewController {
                 //날짜 구하기
                 let date = stringToDate(mainView.dateTextField.text!)
                 
-                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: date)
+                let task = UserDiary(diaryTitle: mainView.titleTextField.text!, diaryContent: "", diaryDate: mainView.dateTextField.text!)
                 
                 self.repository.addItem(item: task)
-                print(date)
                 
                 //도큐먼트에 이미지 저장
                 if let image = mainView.mainImageView.image {

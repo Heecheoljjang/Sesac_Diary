@@ -23,7 +23,7 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.mainImageView.image = loadImageFromDocument(fileName: "\(tasks[indexPath.row].objectID).jpg")
         
         cell.titleLabel.text = tasks[indexPath.row].diaryTitle
-        cell.dateLabel.text = dateToString(tasks[indexPath.row].diaryDate)
+        cell.dateLabel.text = tasks[indexPath.row].diaryDate
     
         return cell
     }
@@ -31,7 +31,7 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
         
-        vc.diary = Diary(image: "\(tasks[indexPath.row].objectID).jpg", title: tasks[indexPath.row].diaryTitle, date: dateToString(tasks[indexPath.row].diaryDate), body: tasks[indexPath.row].diaryContent ?? "")
+        vc.diary = Diary(image: "\(tasks[indexPath.row].objectID).jpg", title: tasks[indexPath.row].diaryTitle, date: tasks[indexPath.row].diaryDate, body: tasks[indexPath.row].diaryContent ?? "")
         
         transition(vc, transitionSytle: .push)
     }
@@ -72,7 +72,8 @@ extension StartViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     //무조건 점 하나
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if repository.fetchDate(date: date).count != 0 {
+        let dateText = dateToString(date)
+        if repository.fetchDate(date: dateText).count != 0 {
             return 1
         } else {
             return 0
@@ -98,7 +99,7 @@ extension StartViewController: FSCalendarDelegate, FSCalendarDataSource {
 
     //렘 데이터 날짜에 따라 몇개의 글이 있는지
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-
-        tasks = repository.fetchDate(date: date)
+        let dateText = dateToString(date)
+        tasks = repository.fetchDate(date: dateText)
     }
 }

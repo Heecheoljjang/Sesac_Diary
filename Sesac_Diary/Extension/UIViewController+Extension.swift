@@ -29,10 +29,10 @@ extension UIViewController {
         
         return dateFormatter.string(from: date)
     }
-    
+//    
 //    func getCurrentTime(_ date: Date) -> Date {
 //        
 //        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "ko-Kr")
+//        dateFormatter.dateFormat = ""
 //    }
 }

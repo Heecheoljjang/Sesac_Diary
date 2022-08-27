@@ -53,7 +53,9 @@ class StartViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         //fetchRealm()
-        tasks = repository.fetchDate(date: Date())
+        let dateText = dateToString(Date())
+        print("dateText", dateText)
+        tasks = repository.fetchDate(date: dateText)
         mainView.calendar.reloadData()
         mainView.tableView.reloadData()
     }
