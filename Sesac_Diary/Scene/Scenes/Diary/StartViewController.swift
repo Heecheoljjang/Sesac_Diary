@@ -15,7 +15,6 @@ class StartViewController: BaseViewController {
     
     var diaryList: [Diary] = []
     
-    //let localRealm = try! Realm() //가져오기 2번쨰
     let repository = UserDiaryRepository()
     
     let formatter: DateFormatter = {

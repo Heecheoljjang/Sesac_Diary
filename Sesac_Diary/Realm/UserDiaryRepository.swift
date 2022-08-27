@@ -14,20 +14,18 @@ import RealmSwift
 protocol UserDiaryRepositoryType {
     func fetch() -> Results<UserDiary>
     func fetchSort(_ sort: String) -> Results<UserDiary>
-    func fetchDate(date: Date) -> Results<UserDiary>
+    func fetchDate(date: String) -> Results<UserDiary>
     func updateFavorite(item: UserDiary)
     func deleteItem(item: UserDiary)
     func addItem(item: UserDiary)
 }
 
-class UserDiaryRepository {
+final class UserDiaryRepository: UserDiaryRepositoryType {
+
+    let localRealm = try! Realm()
     
     func fetchDate(date: String) -> Results<UserDiary> {
-        
-//        return localRealm.objects(UserDiary.self).filter("diaryDate >= %@ AND diaryDate < %@", date, Date(timeInterval: 86400, since: date)) //%@는 NSPredicate로 매개변수로 생각
-        //날짜를 고르면 00:00:00로 출력이되기때문에 그냥 date부터 86400더하면됨.
 
-//        return localRealm.objects(UserDiary.self).filter("diaryDate >= %@ AND diaryDate < %@", myDate, Date(timeInterval: 86400, since: myDate))
         return localRealm.objects(UserDiary.self).filter("diaryDate == '\(date)'")
     }
     
@@ -41,9 +39,7 @@ class UserDiaryRepository {
             print(error)
         }
     }
-    
-    let localRealm = try! Realm()
-    
+
     //반환값 그대로
     func fetch() -> Results<UserDiary> {
         return localRealm.objects(UserDiary.self)

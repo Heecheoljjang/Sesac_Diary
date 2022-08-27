@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
     
     let startVC = StartViewController()
     let backupVC = BackupViewController()
