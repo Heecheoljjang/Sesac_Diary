@@ -23,6 +23,8 @@
 		973A2CBB28B9CE3D00917DC0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973A2CBA28B9CE3D00917DC0 /* TabBarController.swift */; };
 		973A2CC128B9D68200917DC0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973A2CC028B9D68200917DC0 /* SearchViewController.swift */; };
 		973A2CC628B9DE6300917DC0 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973A2CC528B9DE6300917DC0 /* SearchView.swift */; };
+		973A2CC828BA3BF500917DC0 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973A2CC728BA3BF500917DC0 /* SearchTableViewCell.swift */; };
+		973A2CCB28BA3FC000917DC0 /* SearchViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973A2CCA28BA3FC000917DC0 /* SearchViewController+Extension.swift */; };
 		977A3FA028B7016300B0E342 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 977A3F9F28B7016300B0E342 /* Zip */; };
 		97A1927B28B3163C0053E452 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 97A1927A28B3163C0053E452 /* Realm */; };
 		97A1927D28B3163C0053E452 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 97A1927C28B3163C0053E452 /* RealmSwift */; };
@@ -77,6 +79,8 @@
 		973A2CBA28B9CE3D00917DC0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		973A2CC028B9D68200917DC0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		973A2CC528B9DE6300917DC0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		973A2CC728BA3BF500917DC0 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		973A2CCA28BA3FC000917DC0 /* SearchViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Extension.swift"; sourceTree = "<group>"; };
 		97A1927F28B319E60053E452 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		97BA742628B5A5AB008458DF /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		97BA742828B5D262008458DF /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
@@ -180,10 +184,19 @@
 		973A2CBF28B9D67400917DC0 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				973A2CC928BA3BF800917DC0 /* Cell */,
 				973A2CC028B9D68200917DC0 /* SearchViewController.swift */,
 				973A2CC528B9DE6300917DC0 /* SearchView.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		973A2CC928BA3BF800917DC0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				973A2CC728BA3BF500917DC0 /* SearchTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		97A1927E28B319CA0053E452 /* Realm */ = {
@@ -322,6 +335,7 @@
 				97BA742828B5D262008458DF /* FileManager+Extension.swift */,
 				9719A57628B6402F000FBB9D /* BackupViewController+Extension.swift */,
 				97F803FD28B91E1B00236071 /* UIViewController+Extension.swift */,
+				973A2CCA28BA3FC000917DC0 /* SearchViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -454,6 +468,7 @@
 				97D3D58E28B0E43C00BECC8B /* WriteView.swift in Sources */,
 				97BA742928B5D262008458DF /* FileManager+Extension.swift in Sources */,
 				97D3D58128B0CA0500BECC8B /* BaseView.swift in Sources */,
+				973A2CCB28BA3FC000917DC0 /* SearchViewController+Extension.swift in Sources */,
 				9731734C28B299470068561D /* StartTableViewCell.swift in Sources */,
 				97D3D58528B0DF8B00BECC8B /* StartView.swift in Sources */,
 				97E9BCD428B1F33900DEC5C0 /* EndPoint.swift in Sources */,
@@ -473,6 +488,7 @@
 				97D3D59428B0EB4C00BECC8B /* CustomTitleTextField.swift in Sources */,
 				97D3D59F28B117CA00BECC8B /* CustomTextView.swift in Sources */,
 				97D3D59228B0E45000BECC8B /* ImageSelectView.swift in Sources */,
+				973A2CC828BA3BF500917DC0 /* SearchTableViewCell.swift in Sources */,
 				97E9BCC228B1EF1900DEC5C0 /* ImageAPIManager.swift in Sources */,
 				9731734928B299000068561D /* StartViewController+Extension.swift in Sources */,
 				9731734E28B299600068561D /* UITableViewCell+Extension.swift in Sources */,

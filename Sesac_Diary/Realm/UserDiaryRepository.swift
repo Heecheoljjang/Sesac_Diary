@@ -52,6 +52,10 @@ class UserDiaryRepository {
     func fetchSort(_ sort: String) -> Results<UserDiary> {
         return localRealm.objects(UserDiary.self).sorted(byKeyPath: sort, ascending: true)
     }
+    
+    func fetchFilter(_ filter: String) -> Results<UserDiary> {
+        return localRealm.objects(UserDiary.self).filter("diaryContent CONTAINS[c] '\(filter)'")
+    }
 
     func updateFavorite(item: UserDiary) {
         try! localRealm.write {

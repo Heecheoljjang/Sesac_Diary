@@ -74,13 +74,13 @@ class StartViewController: BaseViewController {
         let sortButtonMenu = UIMenu(title: "정렬", image: nil, identifier: nil, options: .displayInline, children: menus)
         let sortButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "line.3.horizontal.circle"), primaryAction: nil, menu: sortButtonMenu)
         
-        let backupButton = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(presentBackupView))
-        
+//        let backupButton = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(presentBackupView))
+//
         navigationItem.leftBarButtonItem = sortButton
         
         let addButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(startWriting))
         
-        self.navigationItem.rightBarButtonItems = [backupButton, addButton]
+        self.navigationItem.rightBarButtonItems = [addButton]
     }
     
     func fetchRealm() {
