@@ -135,6 +135,9 @@ extension BackupViewController: UIDocumentPickerDelegate {
         //경로에 파일이 존재하는지 -> 이미 복구할 파일을 갖고 있는 것이기때문에 압축 파일 풀어주기만 하면됨
         if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
             
+            //realm파일 문제이므로 삭제를 해봄
+            removeRealmFile()
+            
             //파일에 대한 경로
             //let fileURL = selectedFileURL //위의 sandboxFileURL과 같은 곳을 가리키지만 명시적으로 표시하기위해
             do {
@@ -143,6 +146,7 @@ extension BackupViewController: UIDocumentPickerDelegate {
                     //로딩바같은걸로 시각화가능
                     print("progress: \(progress)")
                 }, fileOutputHandler: { unzippedFile in
+                    
                     print("unzippedFile: \(unzippedFile)")
                     self.showAlert(title: "앱을 다시 실행해주세요!")
                     
@@ -152,17 +156,21 @@ extension BackupViewController: UIDocumentPickerDelegate {
             }
             
         } else {
+            
+            removeRealmFile()
+            
             //경로에 파일이 없기때문에 파일앱에서 카피해주는 과정 필요
             
             do {
                 //파일앱의 zip을 도큐먼트 폴더에 복사
                 try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
                 
-//                let fileURL = path.appendingPathComponent("SesacDiary_1.zip")
                 
                 try Zip.unzipFile(selectedFileURL, destination: path, overwrite: true, password: nil, progress: { progress in
                     print("progress: \(progress)")
+                    print(selectedFileURL)
                 }, fileOutputHandler: { unzippedFile in
+                    
                     print("unzippedFile: \(unzippedFile)")
                     self.showAlert(title: "앱을 다시 실행해주세요!")
                 })

@@ -27,6 +27,7 @@ extension UIViewController {
                 print(error)
             }
         }
+        print(imageDirectoryURL.path)
     }
     
     func loadImageFromDocument(fileName: String) -> UIImage? {
@@ -87,6 +88,19 @@ extension UIViewController {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
         let fileURL = documentDirectory.appendingPathComponent(item + ".zip")
+        
+        do {
+            try FileManager.default.removeItem(at: fileURL)
+            print("완료")
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func removeRealmFile() {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        let fileURL = documentDirectory.appendingPathComponent("default.realm")
         
         do {
             try FileManager.default.removeItem(at: fileURL)
