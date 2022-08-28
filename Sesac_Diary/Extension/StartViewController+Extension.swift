@@ -99,7 +99,8 @@ extension StartViewController: FSCalendarDelegate, FSCalendarDataSource {
 
     //렘 데이터 날짜에 따라 몇개의 글이 있는지
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let dateText = dateToString(date)
+        currentDate = date
+        let dateText = dateToString(currentDate)
         tasks = repository.fetchDate(date: dateText)
     }
 }

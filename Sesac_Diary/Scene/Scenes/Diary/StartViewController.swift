@@ -17,6 +17,8 @@ class StartViewController: BaseViewController {
     
     let repository = UserDiaryRepository()
     
+    var currentDate = Date()
+    
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyMMdd"
@@ -49,9 +51,8 @@ class StartViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //fetchRealm()
-        let dateText = dateToString(Date())
-        print("dateText", dateText)
+        let dateText = dateToString(currentDate)
+        print(dateText)
         tasks = repository.fetchDate(date: dateText)
         mainView.calendar.reloadData()
         mainView.tableView.reloadData()
