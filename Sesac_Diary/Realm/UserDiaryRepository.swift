@@ -13,7 +13,7 @@ import RealmSwift
 
 protocol UserDiaryRepositoryType {
     func fetch() -> Results<UserDiary>
-    func fetchSort(_ sort: String) -> Results<UserDiary>
+    func fetchSort(tasks: Results<UserDiary>, _ sort: String) -> Results<UserDiary> 
     func fetchDate(date: String) -> Results<UserDiary>
     func updateFavorite(item: UserDiary)
     func deleteItem(item: UserDiary)
@@ -45,8 +45,8 @@ final class UserDiaryRepository: UserDiaryRepositoryType {
         return localRealm.objects(UserDiary.self)
     }
     
-    func fetchSort(_ sort: String) -> Results<UserDiary> {
-        return localRealm.objects(UserDiary.self).sorted(byKeyPath: sort, ascending: true)
+    func fetchSort(tasks: Results<UserDiary>, _ sort: String) -> Results<UserDiary> {
+        return tasks.sorted(byKeyPath: sort, ascending: true)
     }
     
     func fetchFilter(_ filter: String) -> Results<UserDiary> {

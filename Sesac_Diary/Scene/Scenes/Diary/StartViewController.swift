@@ -25,9 +25,7 @@ class StartViewController: BaseViewController {
     
     var tasks: Results<UserDiary>! {
         didSet {
-            print("123")
             mainView.tableView.reloadData()
-            print("리로드")
         }
     }
     
@@ -62,19 +60,17 @@ class StartViewController: BaseViewController {
     func setUpButton() {
         let menus: [UIAction] = [
             UIAction(title: "제목순", image: nil, identifier: nil, discoverabilityTitle: nil, handler: { action in
-                self.tasks = self.repository.fetchSort("diaryTitle")
+                self.tasks = self.repository.fetchSort(tasks: self.tasks, "diaryTitle")
                 self.mainView.tableView.reloadData()
             }), UIAction(title: "날짜순", image: nil, identifier: nil, discoverabilityTitle: nil, handler: { action in
-                self.tasks = self.repository.fetchSort("diaryDate")
+                self.tasks = self.repository.fetchSort(tasks: self.tasks, "diaryDate")
                 self.mainView.tableView.reloadData()
             })
         ]
         
         let sortButtonMenu = UIMenu(title: "정렬", image: nil, identifier: nil, options: .displayInline, children: menus)
         let sortButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "line.3.horizontal.circle"), primaryAction: nil, menu: sortButtonMenu)
-        
-//        let backupButton = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(presentBackupView))
-//
+
         navigationItem.leftBarButtonItem = sortButton
         
         let addButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(startWriting))
