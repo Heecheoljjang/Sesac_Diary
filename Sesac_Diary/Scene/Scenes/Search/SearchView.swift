@@ -58,6 +58,7 @@ final class SearchView: BaseView {
             make.bottom.equalTo(self.safeAreaLayoutGuide)
             make.height.equalTo(1)
             make.leading.trailing.equalTo(self)
+            
         }
         
         tableView.snp.makeConstraints { make in

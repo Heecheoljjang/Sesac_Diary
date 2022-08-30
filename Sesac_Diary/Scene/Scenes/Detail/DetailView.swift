@@ -81,8 +81,9 @@ final class DetailView: BaseView {
         
         mainImageView.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom).offset(20)
-            make.leading.equalTo(self).offset(24)
-            make.trailing.equalTo(self).offset(-24)
+//            make.leading.equalTo(self).offset(24)
+//            make.trailing.equalTo(self).offset(-24)
+            make.horizontalEdges.equalToSuperview().inset(24)
             make.height.equalTo(self).multipliedBy(0.3)
         }
         

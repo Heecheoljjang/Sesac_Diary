@@ -61,8 +61,7 @@ final class StartTableViewCell: BaseTableViewCell {
         
         mainImageView.snp.makeConstraints { make in
             make.leading.equalTo(self).offset(12)
-            make.top.equalTo(self).offset(12)
-            make.bottom.equalTo(self).offset(-12)
+            make.verticalEdges.equalToSuperview().inset(12)
             make.width.equalTo(76)
         }
         

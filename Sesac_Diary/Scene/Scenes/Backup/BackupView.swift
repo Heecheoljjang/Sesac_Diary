@@ -104,8 +104,9 @@ final class BackupView: BaseView {
         restoreButton.snp.makeConstraints { make in
             make.leading.equalTo(backupButton.snp.trailing).offset(12)
             make.top.equalTo(backupButton)
-            make.height.equalTo(backupButton)
-            make.width.equalTo(backupButton)
+//            make.height.equalTo(backupButton)
+//            make.width.equalTo(backupButton)
+            make.size.equalTo(backupButton)
         }
         
         backupTableView.snp.makeConstraints { make in
