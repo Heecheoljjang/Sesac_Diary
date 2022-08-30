@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class DetailView: BaseView {
+final class DetailView: BaseView {
     
     let dateLabel: UILabel = {
         let label = UILabel()

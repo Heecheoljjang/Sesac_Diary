@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import FSCalendar
 
-class StartViewController: BaseViewController {
+final class StartViewController: BaseViewController {
 
     var mainView = StartView()
     

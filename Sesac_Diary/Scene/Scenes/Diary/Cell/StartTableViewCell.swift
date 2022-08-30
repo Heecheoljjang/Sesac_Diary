@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class StartTableViewCell: BaseTableViewCell {
+final class StartTableViewCell: BaseTableViewCell {
     
     let mainImageView: UIImageView = {
         let view = UIImageView()

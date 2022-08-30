@@ -16,7 +16,7 @@ protocol SelectImageDelegate {
     func sendImageDate(image: UIImage)
 }
 
-class WriteViewController: BaseViewController {
+final class WriteViewController: BaseViewController {
 
     var mainView = WriteView()
     

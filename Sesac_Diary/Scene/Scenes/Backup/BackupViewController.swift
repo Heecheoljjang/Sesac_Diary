@@ -9,7 +9,7 @@ import UIKit
 import Zip
 import SwiftUI
 
-class BackupViewController: BaseViewController {
+final class BackupViewController: BaseViewController {
     
     var mainView = BackupView()
     

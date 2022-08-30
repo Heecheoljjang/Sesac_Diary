@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class BackupView: BaseView {
+final class BackupView: BaseView {
 
     let backupButton: UIButton = {
         let button = UIButton()

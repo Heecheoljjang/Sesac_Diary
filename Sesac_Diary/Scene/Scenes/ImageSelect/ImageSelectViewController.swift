@@ -9,7 +9,7 @@ import UIKit
 
 import JGProgressHUD
 
-class ImageSelectViewController: BaseViewController {
+final class ImageSelectViewController: BaseViewController {
     
     var mainView = ImageSelectView()
     

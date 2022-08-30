@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class ImageSelectView: BaseView {
+final class ImageSelectView: BaseView {
     
     let lineView: UIView = {
         let view = UIView()

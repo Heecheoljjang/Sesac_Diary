@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
     
     var mainView = SearchView()
     

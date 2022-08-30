@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import MapKit
 
-class SearchView: BaseView {
+final class SearchView: BaseView {
     
     let tabBarLineView: UIView = {
         let view = UIView()

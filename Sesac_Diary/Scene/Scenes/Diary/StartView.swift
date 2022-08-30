@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import FSCalendar
 
-class StartView: BaseView {
+final class StartView: BaseView {
 
     let lineView: UIView = {
         let view = UIView()

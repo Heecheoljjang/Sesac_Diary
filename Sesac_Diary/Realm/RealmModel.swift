@@ -12,7 +12,7 @@ import UIKit
 //테이블에 대한 스키마
 //테이블 이름
 //@persisted: 컬럼
-class UserDiary: Object {
+final class UserDiary: Object {
     //제목, 내용(옵션), 작성날짜(필), 등록 날짜(필), 즐겨찾기(필), 사진url(옵)
     @Persisted var diaryTitle: String //제목(필수)
     @Persisted var diaryContent: String?

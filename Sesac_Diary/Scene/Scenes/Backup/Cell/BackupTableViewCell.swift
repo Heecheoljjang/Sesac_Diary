@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class BackupTableViewCell: BaseTableViewCell {
+final class BackupTableViewCell: BaseTableViewCell {
     
     let dateLabel: UILabel = {
         let label = UILabel()
